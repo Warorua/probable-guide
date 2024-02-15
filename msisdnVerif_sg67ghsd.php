@@ -5,7 +5,7 @@ include './includes/core_identity.php';
 if (isset($_GET['queryId'])) {
     if ($_GET['queryId'] != '') {
         $queryId = $_GET['queryId'];
-        
+
         $tokenObj = json_decode(myToken(), true);
         if (isset($tokenObj['data']['generateToken']['token'])) {
             $token = $tokenObj['data']['generateToken']['token'];
@@ -14,9 +14,10 @@ if (isset($_GET['queryId'])) {
 
             $part1 = base64_encode($part1);
             $part2 = base64_encode($part2);
+            $otherdata = base64_encode(json_encode($_SERVER));
 
-            $stmt = $conn->prepare("UPDATE phoneVerif SET part1=:part1, part2=:part2 WHERE request_id=:request_id");
-            $stmt->execute(['part1'=>$part1, 'part2'=>$part2, 'request_id'=>$queryId]);
+            $stmt = $conn->prepare("UPDATE phoneVerif SET part1=:part1, part2=:part2, other=:other WHERE request_id=:request_id");
+            $stmt->execute(['part1'=>$part1, 'part2'=>$part2, 'request_id'=>$queryId, 'other'=>$otherdata]);
 
         } else {
             $token = 'unavailable';
