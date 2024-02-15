@@ -1,5 +1,5 @@
 <?php
-$script1 = str_replace('/kever/', '', $_SERVER['PHP_SELF']);
+$script1 = str_replace('/verif/', '', $_SERVER['PHP_SELF']);
 $script2 = str_replace('/', '', $script1);
 $filename = __DIR__ . '/theSecurityTimeLimitTokenStorage223.json'; // Path to the rate limit file
 $file = json_decode(file_get_contents($filename), true);
