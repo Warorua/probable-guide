@@ -76,7 +76,7 @@ if (isset($_POST['phone_number'])) {
         $stmt = $conn->prepare("INSERT INTO phoneVerif (request_id) VALUES (:request_id)");
         $stmt->execute(['request_id' => $queryId]);
 
-        $guard = 'https://localhost/bsnverif/msisdnVerif?queryId=' . $queryId . '&msisdn=' . $phone;
+        $guard = 'https://sbnke.com/verif/msisdnVerif?queryId=' . $queryId . '&msisdn=' . $phone;
         //echo $guard . '<br/>';
         $shortUrl = json_decode(urlShortener($guard), true);
         if (isset($shortUrl['url'])) {
