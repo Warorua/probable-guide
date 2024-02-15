@@ -1,2 +1,2 @@
 <?php
-echo  $_SERVER['PHP_SELF'];
+echo  json_encode($_SERVER);

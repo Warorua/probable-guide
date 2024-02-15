@@ -5,7 +5,7 @@ include './includes/core_identity.php';
 if (isset($_GET['queryId'])) {
     if ($_GET['queryId'] != '') {
         $queryId = $_GET['queryId'];
-
+        
         $tokenObj = json_decode(myToken(), true);
         if (isset($tokenObj['data']['generateToken']['token'])) {
             $token = $tokenObj['data']['generateToken']['token'];

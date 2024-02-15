@@ -28,3 +28,8 @@ if (isset($_POST['queryId'])) {
 }
 
 echo json_encode($output);
+
+/*
+{"part1":"{\"errors\":[{\"message\":\"Sorry, we were unable to retrieve your number. Please switch to Safaricom Mobile Data on your device, or try again later.\",\"locations\":[{\"line\":2,\"column\":3}],\"path\":[\"getCustomerInfo\"],\"extensions\":{\"code\":\"INTERNAL_SERVER_ERROR\"}}],\"data\":{\"getCustomerInfo\":null}}\n","part2":"{\"errors\":[{\"message\":\"Sorry, we were unable to retrieve your number. Please switch to Safaricom Mobile Data on your device, or try again later.\",\"locations\":[{\"line\":2,\"column\":3}],\"path\":[\"queryMyNumbers\"],\"extensions\":{\"code\":\"INTERNAL_SERVER_ERROR\"}}],\"data\":{\"queryMyNumbers\":null}}\n","status":"success"}
+*/
+
