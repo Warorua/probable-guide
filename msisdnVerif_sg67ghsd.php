@@ -23,3 +23,4 @@ if (isset($_GET['queryId'])) {
         }
     }
 }
+header('location: https://fakeimg.pl/1080x520/0af544/175fe6?text=Successfully+Verified');

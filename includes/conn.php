@@ -1,7 +1,7 @@
 <?php
 $stime = time();
 date_default_timezone_set("Africa/Nairobi");
-include './includes/security.php';
+//include './includes/security.php';
 // server should keep session data for AT LEAST 1 hour
 ini_set('session.gc_maxlifetime', 3600);
 ini_set('max_execution_time', 3600);
