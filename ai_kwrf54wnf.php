@@ -19,7 +19,7 @@ if (!isset($obj['fullname'])) {
 }
 function AI_res($info)
 {
-    $apiKey = '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';
+    $apiKey = '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';
 
     $gpt4Model = 'gpt-4-turbo-preview'; // Adjust this to the correct GPT-4 model
     //$gpt4Prompt = "Analyze the profile of this person from the details in the JSON provided and provide useful insights(make its as brief as possible, 20 words max per insight) that a lending company should consider before loaning the person. Also, provide a brief of what the person might be. Create an analysis on a scale of 1 to 10 across five key factors: Financial Stability, Credit History, Income Predictability, Financial Responsibility, and Risk Level then place it between tags <visual></visual>:".$info; // Example prompt
