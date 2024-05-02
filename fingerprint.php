@@ -6,7 +6,7 @@ include './includes/header.php';
 <div class="mt-6" id="rest"></div>
 
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.0/fingerprint2.min.js"></script>
+
 <div style="display: none;">
     <p id="webgl"></p>
     <p id="audio"></p>
