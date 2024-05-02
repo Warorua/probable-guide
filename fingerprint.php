@@ -116,7 +116,7 @@ if (isset($_SESSION['authorizedUserToken'])) {
 <script>
     //*
   // Initialize the agent at application startup.
-  const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
+  const fpPromise = import('https://fpjscdn.net/v3/ucWBNp9qok8sFzuOft8z')
     .then(FingerprintJS => FingerprintJS.load())
 
   // Get the visitor identifier when you need it.
