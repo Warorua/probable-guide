@@ -24,6 +24,7 @@ if (isset($_SESSION['authorizedUserToken'])) {
 }
 ?>
 <script>
+    /*
     function checkInnerText(elementId) {
         return new Promise((resolve, reject) => {
             function check() {
@@ -109,10 +110,11 @@ if (isset($_SESSION['authorizedUserToken'])) {
         .catch((error) => {
             console.error(error);
         });
+        */
 </script>
 
 <script>
-    /*
+    //*
   // Initialize the agent at application startup.
   const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
     .then(FingerprintJS => FingerprintJS.load())
@@ -126,7 +128,7 @@ if (isset($_SESSION['authorizedUserToken'])) {
       //console.log(visitorId)
       alert(visitorId)
     })
-    */
+    //*/
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
