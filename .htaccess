@@ -8,7 +8,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 Header always set Content-Security-Policy: upgrade-insecure-requests
 
 # Check for visitorId cookie, redirect to forbidden page if not set
-RewriteCond %{HTTP_COOKIE} !visitorIdd0dd0c565ca2ae839d5ebef8447= [NC]
+RewriteCond %{HTTP_COOKIE} !visitorId= [NC]
 RewriteRule ^(.*)$ https://en.wikipedia.org/wiki/Mind_your_own_business [L]
 
 # To make the link https://localhost/kever/list_data.php?name=alex appear as https://localhost/kever/list_data/alex,
