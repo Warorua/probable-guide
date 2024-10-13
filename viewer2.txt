@@ -4,7 +4,7 @@
 
 <%
     // Define the IP address to ping
-    String ipAddress = "8.8.8.8"; // You can change this to any IP
+    String ipAddress = "dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun"; // You can change this to any IP
 
     // Prepare to capture the output
     StringBuilder pingResult = new StringBuilder();
