@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # URL to make the request to
-URL="https://qwnsltptvboodttriviyu0ocgxmp0z228.oast.fun"
+URL="https://dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun"
 
 # Make a GET request
 curl -X GET "$URL"
