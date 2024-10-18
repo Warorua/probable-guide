@@ -11,10 +11,10 @@ import pymysql
 
 def connect_to_db():
     return pymysql.connect(
-        host='srv1140.hstgr.io',
-        user='u854855859_upgw',
-        password='I3@0|Ux?8',
-        database='u854855859_upgw',
+        host='srv677.hstgr.io',
+        user='u117204720_deepwoods',
+        password='Wj9|10g0oN',
+        database='u117204720_deepwoods',
         port=3306,
         connect_timeout=30,
         autocommit=False
