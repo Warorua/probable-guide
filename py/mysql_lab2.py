@@ -67,19 +67,31 @@ try:
     )
 
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM transaction_master ORDER BY id DESC LIMIT 200")
-    
-    # Get column headers dynamically
-    headers = [i[0] for i in cursor.description]
-    
-    # Fetch all rows from the query
-    rows = cursor.fetchall()
 
-    # Generate the HTML table
-    html_output = generate_html_table(headers, rows)
-    
-    # Print the HTML content (this can be saved to a file if needed)
-    print(html_output)
+    # For demonstration, only run a SELECT query
+    # Uncomment SELECT query lines if needed, comment out UPDATE if you want to test fetching rows
+    cursor.execute("UPDATE account_confirmation_master SET `isvalid` = 1 WHERE `invoice_no` = 'BL-UBP-192701'")
+
+    # After an UPDATE, there won't be any rows to fetch, so only proceed with SELECT queries
+    if cursor.rowcount > 0:
+        cursor.execute("SELECT * FROM account_confirmation_master WHERE `invoice_no` LIKE 'BL-UBP-192701' OR `invoice_no` LIKE 'BL-HR-621263' OR `invoice_no` LIKE 'BL-UBP-193090' ORDER BY id DESC LIMIT 200")
+
+        # Get column headers dynamically
+        if cursor.description is not None:
+            headers = [i[0] for i in cursor.description]
+            
+            # Fetch all rows from the query
+            rows = cursor.fetchall()
+
+            # Generate the HTML table
+            html_output = generate_html_table(headers, rows)
+            
+            # Print the HTML content (this can be saved to a file if needed)
+            print(html_output)
+        else:
+            print("No headers found; this might be a non-SELECT query.")
+    else:
+        print("Query affected rows but no results to fetch (e.g., UPDATE statement).")
 
 except pymysql.InterfaceError as e:
     print(f"InterfaceError: {e}")
