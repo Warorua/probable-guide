@@ -58,13 +58,13 @@ def generate_html_table(headers, rows):
 
 try:
     connection = pymysql.connect(
-        host='192.168.100.73',
-        #host='192.168.0.65',
+        #host='192.168.100.73',
+        host='192.168.0.65',
         user='root',
-        password='Happycoding',
-        #password='happycoding',
-        database='db_api1_service',
-        #database='upgw',
+        #password='Happycoding',
+        password='happycoding',
+        #database='db_api1_service',
+        database='upgw',
         port=3306,  # Specify your MySQL port here
         connect_timeout=30  # Increased timeout for better stability
     )

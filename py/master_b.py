@@ -1,0 +1,50 @@
+import sys
+import os
+import base64
+import io
+import traceback
+
+# Example Base64-encoded Python code (replace it with your actual Base64 code)
+# Example contains an error (uncommented line in the string)
+base64_code = "aW1wb3J0IHN5cw0KaW1wb3J0IG9zDQoNCiMgQWRkIHRoZSBkaXJlY3RvcmllcyBjb250YWluaW5nIHNpdGUtcGFja2FnZXMgdG8gdGhlIHN5c3RlbSBwYXRoDQpzeXMucGF0aC5pbnNlcnQoMCwgb3MucGF0aC5hYnNwYXRoKG9zLnBhdGguam9pbihvcy5wYXRoLmRpcm5hbWUoX19maWxlX18pLCAnLi9teWVudi9MaWIvc2l0ZS1wYWNrYWdlcycpKSkNCg0KaW1wb3J0IHB5bXlzcWwNCg0KdHJ5Og0KICAgIGNvbm5lY3Rpb24gPSBweW15c3FsLmNvbm5lY3QoDQogICAgICAgIGhvc3Q9JzE5Mi4xNjguMC42NScsDQogICAgICAgIHVzZXI9J3Jvb3QnLA0KICAgICAgICBwYXNzd29yZD0naGFwcHljb2RpbmcnLA0KICAgICAgICBkYXRhYmFzZT0ndXBndycsDQogICAgICAgIHBvcnQ9MzMwNiwgICMgU3BlY2lmeSB5b3VyIE15U1FMIHBvcnQgaGVyZQ0KICAgICAgICBjb25uZWN0X3RpbWVvdXQ9MzAgICMgSW5jcmVhc2VkIHRpbWVvdXQgZm9yIGJldHRlciBzdGFiaWxpdHkNCiAgICApDQoNCiAgICBjdXJzb3IgPSBjb25uZWN0aW9uLmN1cnNvcigpDQoNCiAgICAjIEV4ZWN1dGUgdGhlIElOU0VSVCBxdWVyeQ0KICAgIGN1cnNvci5leGVjdXRlKCJERUxFVEUgRlJPTSBiYW5rVHJhbnNhY3Rpb25zIFdIRVJFIHRyYW5zYWN0aW9uUmVmPScyMDI0MTAyODEyNTM1NjA4JyIpDQogICAgI2N1cnNvci5leGVjdXRlKCJJTlNFUlQgSU5UTyBiYW5rVHJhbnNhY3Rpb25zICggYmFua0NvZGUsIHRyYW5zYWN0aW9uUmVmLCBhbW91bnQsIGFjY3RSZWZObywgYWNjTmFtZSwgZGVzY3JpcHRpb24sIGluc3RpdHV0aW9uQ29kZSwgaW5zdGl0dXRpb25OYW1lLCBzdGF0dXMsIGxvZ0RhdGUsIHRyYW5zYWNEYXRlLCBhcGlDb2RlLCBtb2JpbGVOdW1iZXIsIHRyYW5zdGF0dXMsIGJpbGxOdW1iZXIsIHRyYW5QYXJ0aWN1bGFyLCBwYXltZW50TW9kZSwgcGhvbmVOdW1iZXIsIHJlcXVlc3RvdXRwdXQsIHBheW1lbnRDaGFubmVsLCBDdXJyZW5jeSwgQnJhbmNoQ29kZSwgc3RhdHVzXzEsIFZhbGlkYXRpb25EYXRlLCBQdXNoZWRDb21tZW50cywgdHJhbnN0YXR1c18xKSBWQUxVRVMgKCAnMDAzJywgJzIwMjQxMDI4MTI1MzU2MDgnLCA3NTAwLCAnQkwtVUJQLTE5MjcwMScsIG51bGwsIG51bGwsICdCTC1VQlAtMTkyNzAxJywgJ1VCUCBBcHBsaWNhdGlvbiBObyBUTEExOTgyMzIgLSAyMDIwXzQyNDI4NScsIG51bGwsICcyMDI0LTEwLTI4IDEyOjUzOjAxJywgJzI4LTEwLTIwMjQgMDA6MDA6MDAnLCAnMmYxMWRiODUyNmZiMmUxNzAyMTllNGE2ODIxNWExYjhmZTkwN2E2YycsIG51bGwsIDAsICdCTC1VQlAtMTkyNzAxJywgJ0JMLVVCUC0xOTI3MDEgVUJQIEFQUExJQ0FUSU9OIE5PIFRMQTE5ODIzMiAtIDIwMjBfNDI0Mjg1JywgJ2Nhc2gnLCBudWxsLCBudWxsLCBudWxsLCBudWxsLCBudWxsLCBudWxsLCAnMjAyNC0xMC0yOCAxMjo1MzowMScsIG51bGwsIDAgKSIpDQoNCiAgICAjIENvbW1pdCB0aGUgdHJhbnNhY3Rpb24gdG8gbWFrZSB0aGUgY2hhbmdlcyBwZXJtYW5lbnQNCiAgICBjb25uZWN0aW9uLmNvbW1pdCgpDQoNCiAgICAjIE9wdGlvbmFsbHksIGZldGNoIHJvd3MgaWYgbmVjZXNzYXJ5DQogICAgZm9yIHJvdyBpbiBjdXJzb3IuZmV0Y2hhbGwoKToNCiAgICAgICAgcHJpbnQocm93KQ0KDQpleGNlcHQgcHlteXNxbC5JbnRlcmZhY2VFcnJvciBhcyBlOg0KICAgIHByaW50KGYiSW50ZXJmYWNlRXJyb3I6IHtlfSIpDQpleGNlcHQgcHlteXNxbC5NeVNRTEVycm9yIGFzIGU6DQogICAgcHJpbnQoZiJNeVNRTCBFcnJvcjoge2V9IikNCmV4Y2VwdCBFeGNlcHRpb24gYXMgZToNCiAgICBwcmludChmIkdlbmVyYWwgRXJyb3I6IHtlfSIpDQpmaW5hbGx5Og0KICAgIGlmIGN1cnNvcjoNCiAgICAgICAgY3Vyc29yLmNsb3NlKCkNCiAgICBpZiBjb25uZWN0aW9uIGFuZCBjb25uZWN0aW9uLm9wZW46DQogICAgICAgIGNvbm5lY3Rpb24uY2xvc2UoKQ0K"
+
+def execute_encoded_script(decoded_code):
+    try:
+        # Execute the decoded Python code in isolation
+        exec(decoded_code)
+    except Exception as e:
+        # Capture the traceback of the error and return it
+        return f"Error during execution:\n{traceback.format_exc()}"
+    return None  # No errors
+
+# Decode the Base64-encoded code
+decoded_code = base64.b64decode(base64_code).decode('utf-8')
+
+# Redirect stdout and stderr to capture all outputs including errors
+old_stdout = sys.stdout
+old_stderr = sys.stderr
+new_output = io.StringIO()
+sys.stdout = new_output
+sys.stderr = new_output
+
+# Error handling for the decoded script execution
+error = None
+try:
+    # Safely execute the decoded Python code and capture the output
+    error = execute_encoded_script(decoded_code)
+    output = new_output.getvalue()  # Capture all outputs including stdout and stderr
+finally:
+    # Restore original stdout and stderr no matter what
+    sys.stdout = old_stdout
+    sys.stderr = old_stderr
+
+# Ensure that the script continues execution even if the decoded code has errors
+if error:
+    output += f"\n{error}"
+
+# Print the output, including errors if any
+print("Output:")
+print(output)
+
+# Ensure main script continues executing regardless of errors in the encoded script
+print("Main script continues executing without interruption.")

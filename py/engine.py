@@ -5,9 +5,7 @@ import os
 # Add the directories containing site-packages to the system path
 sys.path.insert(1, os.path.abspath(os.path.join(os.path.dirname(__file__), './myenv/Lib/site-packages')))
 
-import urllib.request
-import urllib.parse
-import urllib.error
+import httplib2
 import json
 from datetime import datetime, timezone, timedelta
 import pymysql
@@ -84,29 +82,30 @@ def transactions(client_ref_no, connection):
 
 def http_post(url, data):
     try:
-        # Encode the data as application/x-www-form-urlencoded
-        encoded_data = urllib.parse.urlencode(data).encode('utf-8')
-        
-        # Create the request object
-        req = urllib.request.Request(url, data=encoded_data)
-        
-        # Make the request
-        with urllib.request.urlopen(req) as response:
-            # Read the response
-            response_data = response.read().decode('utf-8')
-            
-            # Parse the response as JSON
-            return json.loads(response_data)
-    
-    except urllib.error.HTTPError as e:
-        print(f"HTTPError: {e.code} - {e.reason}")
-        return None
-    except urllib.error.URLError as e:
-        print(f"URLError: {e.reason}")
-        return None
+        # Convert the data dictionary into a URL-encoded string
+        encoded_data = '&'.join(f'{key}={value}' for key, value in data.items())
+
+        # Initialize httplib2 client
+        http = httplib2.Http()
+
+        # Set headers for the POST request
+        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+
+        # Make the POST request
+        response, content = http.request(url, 'POST', headers=headers, body=encoded_data)
+
+        # Check if the response was successful
+        if response.status == 200:
+            # Parse the response content as JSON and return it
+            return json.loads(content.decode('utf-8'))
+        else:
+            print(f"HTTP Error: {response.status}")
+            return None
+
     except Exception as e:
         print(f"General error: {e}")
         return None
+
 
 # Function to normalize phone number (mocked for now, update as needed)
 def normalize_phone_number(phone):
@@ -260,27 +259,25 @@ try:
 
                             print(bankTransactions)
                             print(universal_dab_b(bankTransactions, connection))
-                            
-                            # API request to external service
+
+                            # API request to external service using httplib2
                             url = 'http://192.168.100.116/gateway/taifa/nrs/affirm'
                             headers = {'Content-Type': 'application/json'}
-                            payload = data2_json.encode('utf-8')  # Ensure payload is in bytes and JSON format
-                            # Create the request object and add headers
-                            req = urllib.request.Request(url, data=payload)
-                            req.add_header('Content-Type', 'application/json')
+                            payload = data2_json  # Already a JSON string, no need to encode it in bytes manually for httplib2
+                            # Initialize httplib2 client
+                            http = httplib2.Http()
                             try:
-                                # Send the request and get the response
-                                with urllib.request.urlopen(req) as response:
-                                    # Read and decode the response
-                                    response_data = response.read().decode('utf-8')
+                                # Make the POST request with the JSON payload and headers
+                                response, content = http.request(url, 'POST', headers=headers, body=payload)
+                                if response.status == 200:
+                                    response_data = content.decode('utf-8')
                                     print(response_data)
-                                    
-                            except urllib.error.HTTPError as e:
-                                    print(f"HTTPError: {e.code} - {e.reason}")
-                            except urllib.error.URLError as e:
-                                print(f"URLError: {e.reason}")
+                                else:
+                                    print(f"HTTP Error: {response.status}")
                             except Exception as e:
                                 print(f"General error: {e}")
+
+                          
 
     
     connection.close()

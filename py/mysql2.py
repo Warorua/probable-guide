@@ -67,7 +67,7 @@ try:
     )
 
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM transaction_master ORDER BY id DESC LIMIT 200")
+    cursor.execute("SELECT * FROM account_confirmation_master WHERE `channel` != 'mpesa' ORDER BY id DESC LIMIT 200 OFFSET 0")
     
     # Get column headers dynamically
     headers = [i[0] for i in cursor.description]

@@ -9,9 +9,9 @@ print("sys.path:", sys.path)
 print("Python executable being used:", sys.executable)
 
 try:
-    import pymysql
-    print("pymysql imported successfully inside exec.")
+    import subprocess
+    print("subprocess imported successfully inside exec.")
 except ImportError as e:
-    print("pymysql import failed inside exec: ", e)
+    print("subprocess import failed inside exec: ", e)
     
 # Rest of the decoded code follows...
