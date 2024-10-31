@@ -75,9 +75,9 @@ try:
     #cursor.execute("SELECT * FROM account_confirmation_master WHERE `invoice_no` LIKE 'BL-UBP-192701' OR `invoice_no` LIKE 'BL-HR-621263' OR `invoice_no` LIKE 'BL-UBP-193090' ORDER BY id DESC LIMIT 200")
     #cursor.execute("SELECT DISTINCT `request_ip` FROM account_confirmation_master")
     #cursor.execute("SELECT * FROM `mpesaTransactions` ORDER BY id DESC LIMIT 200 OFFSET 500")
-    cursor.execute("SELECT * FROM `bankTransactions` ORDER BY id DESC LIMIT 200 OFFSET 0")
+    #cursor.execute("SELECT * FROM `bankTransactions` ORDER BY id DESC LIMIT 200 OFFSET 0")
     # #cursor.execute("SELECT * FROM `mpesaTransactions` WHERE `mobileno` LIKE '%721303137%' ORDER BY id DESC LIMIT 200")
-    # cursor.execute("SELECT * FROM `transactions` WHERE `comment`='COMPLETED' ORDER BY id DESC LIMIT 500 OFFSET 0")
+    #cursor.execute("SELECT * FROM `transactions` WHERE `comment`='COMPLETED' ORDER BY id DESC LIMIT 500 OFFSET 0")
     # #cursor.execute("SELECT * FROM `transactions` WHERE `comment`='COMPLETED' AND `bankCode`='003' ORDER BY id DESC LIMIT 500 OFFSET 0")
     # #cursor.execute("SELECT * FROM `transactions` WHERE `mobileNumber` LIKE '%720664431%' ORDER BY id DESC LIMIT 500 OFFSET 0")
     # #cursor.execute("SELECT * FROM `transactions` WHERE `inserted_by`='root@192.168.0.1' ORDER BY id DESC LIMIT 500 OFFSET 0")
@@ -86,7 +86,7 @@ try:
     # #cursor.execute("SELECT * FROM mpesaTransactions_audit WHERE clientRefNo ='BL-UBP-164702' OR clientRefNo = 'BL-UBP-064249' ORDER BY id")
     # #cursor.execute("SELECT * FROM bankTransactions_1 WHERE clientRefNo ='BL-UBP-164702' OR clientRefNo = 'BL-UBP-064249' OR clientRefNo = 'BL-UBP-165138' OR clientRefNo = 'BL-UBP-165277' OR clientRefNo = 'BL-UBP-164997' OR clientRefNo = 'BL-UBP-060215' ORDER BY id")
     # #cursor.execute("SELECT * FROM bankTransactions ORDER BY id DESC LIMIT 500 OFFSET 0")
-    #cursor.execute("DESCRIBE account_confirmation_master")
+    cursor.execute("SELECT * FROM apis ORDER BY id DESC LIMIT 500 OFFSET 0")
     
     # Get column headers dynamically
     headers = [i[0] for i in cursor.description]

