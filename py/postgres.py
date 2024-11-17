@@ -1,40 +1,55 @@
 import sys
 import os
 
-
 # Add the directories containing site-packages to the system path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './myenv/Lib/site-packages')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './python3.6/site-packages')))
 
-import pg8000
+# Try importing pg8000 directly
+try:
+    import pg8000
+    print("pg8000 imported successfully.")
+except ImportError as e:
+    print(f"pg8000 import error: {e}")
 
 # Database connection information
 db_config = {
     'host': '192.168.100.122',
-    'database': 'postgres',
+    'database': 'nrs_logs',
     'user': 'postgres',
-    'password': 'postgres',  # Replace with the actual password
+    'password': 'postgres',  
     'port': 5432
 }
 
-# Function to query the database
-def query_database(query):
+
+# Function to query the database, accepting both pg8000 and db_config as arguments
+def query_database(query, pg8000_module, db_config):
     try:
-        # Connect to the PostgreSQL database
-        conn = pg8000.connect(
+        # Connect to the PostgreSQL database using pg8000
+        conn = pg8000_module.connect(
             host=db_config['host'],
             database=db_config['database'],
             user=db_config['user'],
             password=db_config['password'],
             port=db_config['port']
         )
-        
-        # Execute the query
-        rows = conn.run(query)
-        
-        # Get column headers from description
-        headers = [desc[0] for desc in conn.description]
 
-        # Close the connection
+        # Create a cursor to execute the query
+        cursor = conn.cursor()
+        cursor.execute(query)
+
+        # Handle SELECT queries
+        if query.strip().lower().startswith("select"):
+            rows = cursor.fetchall()
+            headers = [desc[0] for desc in cursor.description]
+        else:
+            # For non-SELECT queries, commit the transaction
+            conn.commit()
+            rows = None
+            headers = None
+            print(f"Query executed successfully. Rows affected: {cursor.rowcount}")
+
+        # Close the cursor and connection
+        cursor.close()
         conn.close()
 
         return headers, rows
@@ -43,7 +58,7 @@ def query_database(query):
         print(f"Error: {e}")
         return None, None
 
-# Function to generate the HTML table (from your provided code)
+# Function to generate a well-formatted HTML table
 def generate_html_table(headers, rows):
     html = """
     <html>
@@ -57,7 +72,7 @@ def generate_html_table(headers, rows):
                 font-size: 18px;
                 text-align: left;
             }
-            table, th, td {
+            th, td {
                 border: 1px solid #dddddd;
                 padding: 8px;
             }
@@ -74,18 +89,19 @@ def generate_html_table(headers, rows):
         <table>
             <tr>
     """
-    # Add table headers dynamically
+    # Add headers to the HTML table
     for header in headers:
         html += f"<th>{header}</th>"
     html += "</tr>"
 
-    # Populate the table rows with data
+    # Add rows to the HTML table
     for row in rows:
-        html += f"<tr>"
+        html += "<tr>"
         for col in row:
             html += f"<td>{col}</td>"
         html += "</tr>"
 
+    # Close the HTML tags
     html += """
         </table>
     </body>
@@ -93,19 +109,36 @@ def generate_html_table(headers, rows):
     """
     return html
 
-# Example usage of querying the database and printing the HTML result
-if __name__ == "__main__":
-    # Example query
-    query = "SELECT datname FROM pg_database;"  # Replace 'your_table' with an actual table in your DB
+# Example usage of querying the database
+#query = "SELECT datname FROM pg_database;"
+#query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
+query = """
+SELECT * 
+FROM taifa_payment_confirmation 
+WHERE "BillRefNumber" IN (
+    'BL-UBP-192712', 
+    'BL-GESS-34570', 
+    'BL-SE-5F1BAB51', 
+    'BL-GPK-3818185', 
+    'BL-UBP-199659', 
+    'BL-LR-285949', 
+    'BL-HR-599673'
+)
+ORDER BY id DESC 
+LIMIT 200 OFFSET 0;
+"""
 
-    # Fetch headers and rows from the database
-    headers, rows = query_database(query)
+# query = """
+# DELETE 
+# FROM taifa_payment_confirmation 
+# WHERE "BillRefNumber" = 'BL-UBP-192712';
+# """
 
-    if headers and rows:
-        # Generate the HTML table
-        html_output = generate_html_table(headers, rows)
-
-        # Print the HTML output
-        print(html_output)
-    else:
-        print("Failed to fetch data from the database.")
+# Pass both pg8000 and db_config explicitly to the function
+headers, rows = query_database(query, pg8000, db_config)
+if headers and rows:
+    # Generate and print the HTML table
+    html_output = generate_html_table(headers, rows)
+    print(html_output)
+else:
+    print("Failed to fetch data from the database or empty response.")

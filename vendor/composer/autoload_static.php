@@ -68,10 +68,19 @@ class ComposerStaticInitd6a266c1e3a4873a728b914615a2d502
             'Faker\\' => 6,
             'Facebook\\WebDriver\\' => 19,
         ),
+        'E' => 
+        array (
+            'Endroid\\QrCode\\' => 15,
+        ),
         'D' => 
         array (
             'Desarrolla2\\Test\\Cache\\' => 23,
             'Desarrolla2\\Cache\\' => 18,
+            'DASPRiD\\Enum\\' => 13,
+        ),
+        'B' => 
+        array (
+            'BaconQrCode\\' => 12,
         ),
     );
 
@@ -110,8 +119,8 @@ class ComposerStaticInitd6a266c1e3a4873a728b914615a2d502
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -123,8 +132,8 @@ class ComposerStaticInitd6a266c1e3a4873a728b914615a2d502
         ),
         'PedroSancao\\' => 
         array (
-            0 => __DIR__ . '/..' . '/pedrosancao/php-random-data/src',
-            1 => __DIR__ . '/..' . '/pedrosancao/php-otp/src',
+            0 => __DIR__ . '/..' . '/pedrosancao/php-otp/src',
+            1 => __DIR__ . '/..' . '/pedrosancao/php-random-data/src',
         ),
         'Nowakowskir\\JWT\\' => 
         array (
@@ -162,6 +171,10 @@ class ComposerStaticInitd6a266c1e3a4873a728b914615a2d502
         array (
             0 => __DIR__ . '/..' . '/facebook/webdriver/lib',
         ),
+        'Endroid\\QrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/endroid/qr-code/src',
+        ),
         'Desarrolla2\\Test\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/desarrolla2/cache/test',
@@ -169,6 +182,14 @@ class ComposerStaticInitd6a266c1e3a4873a728b914615a2d502
         'Desarrolla2\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/desarrolla2/cache/src',
+        ),
+        'DASPRiD\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dasprid/enum/src',
+        ),
+        'BaconQrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
         ),
     );
 

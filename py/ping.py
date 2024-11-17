@@ -89,8 +89,8 @@ def scan_ip_range(start_ip, end_ip, ports):
             print(f"Unable to resolve NetBIOS name for IP {ip_str}")
 
 # Example usage
-start_ip = "192.168.100.1"  # Replace with the start of your IP range
-end_ip = "192.168.5.50"    # Replace with the end of your IP range
-ports = [80, 3306, 5432]     # Replace with the ports you want to check
+start_ip = "192.168.100.110"  # Replace with the start of your IP range
+end_ip = "192.168.100.160"    # Replace with the end of your IP range
+ports = [80, 3306, 5432,443,22,8080]     # Replace with the ports you want to check
 
 scan_ip_range(start_ip, end_ip, ports)

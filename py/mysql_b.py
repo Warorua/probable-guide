@@ -19,8 +19,14 @@ try:
     cursor = connection.cursor()
 
     # Execute the INSERT query
-    cursor.execute("DELETE FROM bankTransactions WHERE transactionRef='2024102910377639'")
-    #cursor.execute("INSERT INTO bankTransactions ( bankCode, transactionRef, amount, acctRefNo, accName, description, institutionCode, institutionName, status, logDate, transacDate, apiCode, mobileNumber, transtatus, billNumber, tranParticular, paymentMode, phoneNumber, requestoutput, paymentChannel, Currency, BranchCode, status_1, ValidationDate, PushedComments, transtatus_1) VALUES ( '003', '2024102812535608', 7500, 'BL-UBP-192701', null, null, 'BL-UBP-192701', 'UBP Application No TLA198232 - 2020_424285', null, '2024-10-28 12:53:01', '28-10-2024 00:00:00', '2f11db8526fb2e170219e4a68215a1b8fe907a6c', null, 0, 'BL-UBP-192701', 'BL-UBP-192701 UBP APPLICATION NO TLA198232 - 2020_424285', 'cash', null, null, null, null, null, null, '2024-10-28 12:53:01', null, 0 )")
+    #cursor.execute("SELECT * FROM `bankTransactions` ORDER BY id DESC LIMIT 3 OFFSET 0")
+    #cursor.execute("DELETE FROM bankTransactions WHERE id=179914")
+
+    #cursor.execute("DELETE FROM transactions WHERE id=8912474")
+    cursor.execute("UPDATE transactions SET `inserted_by`='root@192.168.0.64' WHERE id=8912473")
+
+    #cursor.execute("DELETE FROM bankTransactions WHERE transactionRef='2024102910377639'")
+    #cursor.execute("INSERT INTO bankTransactions ( bankCode, transactionRef, amount, acctRefNo, accName, description, institutionCode, institutionName, status, logDate, transacDate, apiCode, mobileNumber, transtatus, billNumber, tranParticular, paymentMode, phoneNumber, requestoutput, paymentChannel, Currency, BranchCode, status_1, ValidationDate, PushedComments, transtatus_1 ) VALUES ( '003', '2024111714381687', 7500, 'BL-UBP-192712', null, null, 'BL-UBP-192712', 'UBP Application No TLA198244 - 2020_267751', null, '2024-11-17 14:38:45', '17-11-2024 00:00:00', '2f11db8526fb2e170219e4a68215a1b8fe907a6c', null, 0, 'BL-UBP-192712', 'BL-UBP-192712 UBP APPLICATION NO TLA198244 - 2020_267751', 'cash', null, null, null, null, null, null, '2024-11-17 14:38:45', null, 0 )")
 
     # Commit the transaction to make the changes permanent
     connection.commit()
