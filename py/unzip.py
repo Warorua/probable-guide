@@ -2,7 +2,7 @@ import zipfile
 import os
 
 # Specify the path to your ZIP file
-zip_file_path = '/opt/tomcat/webapps/aggregate/python3.6.zip'
+zip_file_path = '/opt/tomcat/webapps/aggregate/my_env_b.zip'
 
 # Check if the file exists
 if not os.path.exists(zip_file_path):

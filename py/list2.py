@@ -1,17 +1,17 @@
 import sys
 import os
+from uuid import uuid4
+from datetime import datetime
 import math
 
 # Add the directories containing site-packages to the system path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './myenv/Lib/site-packages')))
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './env2/Lib/site-packages')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './my_env_b/lib/python3.6/site-packages')))
 
 from smbprotocol.connection import Connection
 from smbprotocol.session import Session
 from smbprotocol.tree import TreeConnect
 from smbprotocol.open import Open
 from smbprotocol.file_info import FileInformationClass
-from datetime import datetime
 
 # Function to convert bytes to human-readable format
 def convert_size(size_bytes):
@@ -24,20 +24,23 @@ def convert_size(size_bytes):
     return f"{s} {size_name[i]}"
 
 try:
-    # Establish an SMB connection using smbprotocol
-    connection = Connection(uuid=os.urandom(16), server="192.168.0.64", port=445)
+    # Generate a unique GUID for the connection
+    guid = uuid4()
+
+    # Create a connection
+    connection = Connection(guid=guid, server_name="192.168.0.64", port=445, require_signing=True)
     connection.connect()
 
-    # Start a session (empty credentials for guest access or add real credentials if required)
-    session = Session(connection, username="", password="")
+    # Create a session with guest access (username and password empty)
+    session = Session(connection=connection, username="", password="")
     session.connect()
 
-    # Connect to the tree (shared folder) - Forward slashes for SMB path
-    tree = TreeConnect(session, "//192.168.0.64/tools")
+    # Connect to the tree (shared folder)
+    tree = TreeConnect(session=session, share_name="\\\\192.168.0.64\\tools")
     tree.connect()
 
     # Open the shared directory
-    directory = Open(tree, "")
+    directory = Open(tree, "", "rw")
     directory.create()
 
     # Start HTML table
@@ -54,12 +57,12 @@ try:
         <tbody>
     """
 
-    # List contents of the directory
+    # List directory contents
     for file_info in directory.query_directory("*"):
         file_type = 'Folder' if file_info.file_attributes.directory else 'File'
         file_size = convert_size(file_info.end_of_file)
         last_modified = datetime.fromtimestamp(file_info.last_write_time / 1e7 - 11644473600).strftime('%Y-%m-%d %H:%M:%S')
-        
+
         html_table += f"""
             <tr>
                 <td>{file_type}</td>
@@ -75,13 +78,13 @@ try:
     </table>
     """
 
-    # Close the directory and the tree connection
+    # Close everything
     directory.close()
     tree.disconnect()
     session.disconnect()
     connection.disconnect()
 
-    # Print the HTML table (or save to a file, render in a web page, etc.)
+    # Print the table
     print(html_table)
 
 except Exception as e:

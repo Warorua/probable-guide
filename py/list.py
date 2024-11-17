@@ -2,7 +2,7 @@ import sys
 import os
 
 # Add the directories containing smbprotocol and spnego to the system path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './myenv/Lib/site-packages')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './my_env_b/Lib/site-packages')))
 #sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './myenv/Lib/site-packages/spnego')))  # Adjust path as needed
 
 from smbprotocol.connection import Connection

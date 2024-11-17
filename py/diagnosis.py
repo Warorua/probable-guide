@@ -2,13 +2,13 @@ import sys
 import os
 
 # Add the directories containing site-packages to the system path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './env2/Lib/site-packages')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './my_env_b/lib/python3.6/site-packages')))
 
 print("sys.path:", sys.path)
 print("Python executable being used:", sys.executable)
 
 # Check if the custom directory exists
-custom_path = os.path.abspath(os.path.join(os.path.dirname(__file__), './env2/Lib/site-packages'))
+custom_path = os.path.abspath(os.path.join(os.path.dirname(__file__), './my_env_b/lib/python3.6/site-packages'))
 if os.path.exists(custom_path):
     print(f"Custom path exists: {custom_path}")
 else:
@@ -22,13 +22,13 @@ if os.path.exists(custom_path):
     except Exception as e:
         print(f"Failed to list directory contents: {e}")
 
-# Try to import pg8000 and handle potential import errors
+# Try to import smbprotocol and handle potential import errors
 try:
-    import pg8000
-    print("pg8000 imported successfully.")
-    print("pg8000 location:", pg8000.__file__)
+    import smbprotocol
+    print("smbprotocol imported successfully.")
+    print("smbprotocol location:", smbprotocol.__file__)
 except ImportError as e:
-    print("pg8000 import failed: ", e)
+    print("smbprotocol import failed: ", e)
     print("Current sys.path directories:")
     for path in sys.path:
         print(path)
