@@ -13,8 +13,8 @@ except ImportError as e:
 
 # Database connection information
 db_config = {
-    'host': '192.168.100.122',
-    'database': 'nrs_logs',
+    'host': '192.168.102.22',
+    'database': 'nrs_professionals',
     'user': 'postgres',
     'password': 'postgres',  
     'port': 5432
@@ -111,22 +111,26 @@ def generate_html_table(headers, rows):
 
 # Example usage of querying the database
 #query = "SELECT datname FROM pg_database;"
-#query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
-query = """
-SELECT * 
-FROM taifa_payment_confirmation 
-WHERE "BillRefNumber" IN (
-    'BL-UBP-192712', 
-    'BL-GESS-34570', 
-    'BL-SE-5F1BAB51', 
-    'BL-GPK-3818185', 
-    'BL-UBP-199659', 
-    'BL-LR-285949', 
-    'BL-HR-599673'
-)
-ORDER BY id DESC 
-LIMIT 200 OFFSET 0;
-"""
+#query = "select * from pg_ls_dir('../../../../../home/super');"
+#query = "SELECT pg_read_file('../../../../../etc/mysql/my.cnf');"
+#query = "SELECT * FROM payments_payment LIMIT 200 OFFSET 0"
+#query = "SELECT * FROM payments_payment ORDER BY created_at DESC LIMIT 200 OFFSET 0"
+query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
+# query = """
+# SELECT * 
+# FROM checkout_bill 
+# WHERE "client_reference" IN (
+#     'BL-UBP-192712', 
+#     'BL-GESS-34570', 
+#     'BL-SE-5F1BAB51', 
+#     'BL-GPK-3818185', 
+#     'BL-UBP-199659', 
+#     'BL-LR-285949', 
+#     'BL-HR-599673'
+# )
+# ORDER BY created_at DESC 
+# LIMIT 200 OFFSET 0;
+# """
 
 # query = """
 # DELETE 

@@ -1,23 +1,23 @@
 import os
 
 # Execute the command (ls for Unix/Linux/macOS, dir for Windows)
-stream = os.popen('ls -lha opt/tomcat/webapps/aggregate/')  # or 'dir' for Windows
+#stream = os.popen('ls -lha opt/tomcat/webapps/aggregate/')  # or 'dir' for Windows
 #stream = os.popen('rm -rf opt/tomcat/webapps/aggregate/my_env_b')  # or 'dir' for Windows
 #stream = os.popen('rm opt/tomcat/webapps/aggregate/my_env_b.zip')  # or 'dir' for Windows
-#stream = os.popen('curl -o opt/tomcat/webapps/aggregate/my_env_b.zip https://sbnke.com/my_env_b.zip')  # or 'dir' for Windows
+#stream = os.popen('curl -o opt/tomcat/webapps/aggregate/my_env_b.zip https://sbnke.com/my_env_bb.zip')  # or 'dir' for Windows
 #stream = os.popen('python3 -m pip install fastapi uvicorn --user')  # or 'dir' for Windows
 
 #stream = os.popen('ps aux')  # or 'dir' for Windows
 #stream = os.popen('pkill -9 -f "/usr/lib/jvm/java-11-openjdk-amd64/bin/java"')  # or 'dir' for Windows
 #stream = os.popen('pgrep -f "/usr/lib/jvm/java-11-openjdk-amd64/bin/java"')  # or 'dir' for Windows
 
-#stream = os.popen('curl -X POST http://192.168.100.116/gateway/taifa/nrs/consolidate')  # or 'dir' for Windows
+stream = os.popen('curl --max-time 5 http://192.168.0.64:47001/api')  # or 'dir' for Windows
 #stream = os.popen('curl -X POST http://192.168.100.116/gateway/taifa/nrs/affirm -H "Content-Type: application/json" -d \'{"apiKey": "", "type": null, "billNumber": "BL-UBP-192712", "billAmount": "7500.0", "phone": "null", "transactionDate": "17-11-2024 00:00:00", "Field1": null, "Field2": null, "Field3": null, "Field4": null, "Field5": null, "bankdetails": {"accountNumber": "2024111714381687", "bankName": "Equity Bank", "debitAccount": "BL-UBP-192712", "debitCustName": "BL-UBP-192712 UBP APPLICATION NO TLA198244 - 2020_267751", "bankReference": "2024111714381687", "customerReference": "BL-UBP-192712", "paymentMode": "cash"}, "mpesadetails": null}\'')
 
 
 output = stream.read()
 
-#print(output)
+print(output)
 
 # Split the output by line to prepare for HTML table rows
 lines = output.splitlines()
@@ -62,4 +62,4 @@ html_output += """
 """
 
 # Print the formatted HTML output
-print(html_output)
+#print(html_output)

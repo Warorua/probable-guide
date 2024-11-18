@@ -22,7 +22,7 @@ def convert_size(size_bytes):
 
 try:
     # Establish an SMB connection
-    conn = SMBConnection('', '', 'guest_machine', '192.168.0.64', use_ntlm_v2=True)
+    conn = SMBConnection("", "", "my_client", "my_server", use_ntlm_v2=True, is_direct_tcp=True)
     assert conn.connect('192.168.0.64', 445)
 
     # List shares

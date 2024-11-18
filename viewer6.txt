@@ -1,2 +1,641 @@
 {"success":true,"description":"Payment Received Successfuly","customer_no":"NULL","invoice_no":"BL-UBP-192712","invoice_report":"","balance":7500.0}
 {"success":true,"description":"Payment Reconciled Successfuly","customer_no":"NULL","invoice_no":"BL-GPK-3818185","invoice_report":"","balance":0.0}
+Error scanning 192.168.100.0: [Errno 101] Network is unreachable
+Error scanning 192.168.100.1: [Errno 111] Connection refused
+Error scanning 192.168.100.2: [Errno 111] Connection refused
+Error scanning 192.168.100.5:
+Error scanning 192.168.100.52: [Errno 111] Connection refused
+Error scanning 192.168.100.53: [Errno 111] Connection refused
+Error scanning 192.168.100.54: [Errno 111] Connection refused
+Error scanning 192.168.100.57: [Errno 111] Connection refused
+Error scanning 192.168.100.60: [Errno 111] Connection refused
+Error scanning 192.168.100.64: [Errno 111] Connection refused
+Error scanning 192.168.100.68: [Errno 111] Connection refused
+Error scanning 192.168.100.69: [Errno 111] Connection refused
+Error scanning 192.168.100.70: [Errno 111] Connection refused
+Error scanning 192.168.100.71: [Errno 111] Connection refused
+Error scanning 192.168.100.72: [Errno 111] Connection refused
+Error scanning 192.168.100.73: [Errno 111] Connection refused
+Error scanning 192.168.100.74: [Errno 111] Connection refused
+Error scanning 192.168.100.75: [Errno 111] Connection refused
+Connected to SMB server at 192.168.1.6.
+Available shares:
+- Share name: print$, Type: 0, Comment: Printer Drivers
+- Share name: KNSDI, Type: 0, Comment: KNSDI share center
+- Share name: EmbuPay, Type: 0, Comment: Document repository for EmbuPay development and operations.
+- Share name: IPC$, Type: 3, Comment: IPC Service (knsdisharecenter server (Samba, Ubuntu)
+
+
+
+Error scanning 192.168.100.102: [Errno 111] Connection refused
+Error scanning 192.168.100.103: [Errno 111] Connection refused
+Error scanning 192.168.100.104: [Errno 111] Connection refused
+Error scanning 192.168.100.105:
+Error scanning 192.168.100.106: [Errno 111] Connection refused
+Error scanning 192.168.100.107: [Errno 111] Connection refused
+Error scanning 192.168.100.108: [Errno 111] Connection refused
+Error scanning 192.168.100.109: [Errno 111] Connection refused
+Error scanning 192.168.100.110: [Errno 111] Connection refused
+Error scanning 192.168.100.113:
+Error scanning 192.168.100.114:
+Error scanning 192.168.100.115: [Errno 113] No route to host
+Error scanning 192.168.100.116: [Errno 111] Connection refused
+Error scanning 192.168.100.117: [Errno 111] Connection refused
+Error scanning 192.168.100.118: [Errno 111] Connection refused
+Error scanning 192.168.100.119: [Errno 111] Connection refused
+Error scanning 192.168.100.120: [Errno 111] Connection refused
+Error scanning 192.168.100.121: [Errno 111] Connection refused
+Error scanning 192.168.100.122: [Errno 111] Connection refused
+Error scanning 192.168.100.123: [Errno 111] Connection refused
+Error scanning 192.168.100.124: [Errno 111] Connection refused
+Error scanning 192.168.100.129: [Errno 111] Connection refused
+Error scanning 192.168.100.131: [Errno 111] Connection refused
+Error scanning 192.168.100.132:
+Error scanning 192.168.100.134: [Errno 111] Connection refused
+Error scanning 192.168.100.136: [Errno 111] Connection refused
+Error scanning 192.168.100.137: [Errno 111] Connection refused
+Error scanning 192.168.100.138: [Errno 111] Connection refused
+Error scanning 192.168.100.139: [Errno 111] Connection refused
+Error scanning 192.168.100.140: [Errno 111] Connection refused
+Error scanning 192.168.100.141: [Errno 111] Connection refused
+Error scanning 192.168.100.143: [Errno 111] Connection refused
+Error scanning 192.168.100.144:
+Error scanning 192.168.100.145:
+Error scanning 192.168.100.147: [Errno 111] Connection refused
+Error scanning 192.168.100.151:
+Error scanning 192.168.100.152:
+Error scanning 192.168.100.153: [Errno 111] Connection refused
+Error scanning 192.168.100.157:
+Error scanning 192.168.100.158: [Errno 111] Connection refused
+Error scanning 192.168.100.159: [Errno 111] Connection refused
+Error scanning 192.168.100.160: [Errno 111] Connection refused
+Error scanning 192.168.100.163: [Errno 111] Connection refused
+Error scanning 192.168.100.170: [Errno 111] Connection refused
+Error scanning 192.168.100.171: [Errno 111] Connection refused
+Error scanning 192.168.100.173: [Errno 111] Connection refused
+Error scanning 192.168.100.179: [Errno 111] Connection refused
+
+SMBConnection imported successfully.
+Error scanning 192.168.101.51: [Errno 111] Connection refused
+Error scanning 192.168.101.63: [Errno 111] Connection refused
+Error scanning 192.168.101.64: [Errno 111] Connection refused
+Error scanning 192.168.101.68: [Errno 111] Connection refused
+Error scanning 192.168.101.70: [Errno 111] Connection refused
+Error scanning 192.168.101.75: [Errno 111] Connection refused
+Error scanning 192.168.101.86: [Errno 111] Connection refused
+Error scanning 192.168.101.99: [Errno 111] Connection refused
+Error scanning 192.168.101.118: [Errno 111] Connection refused
+Error scanning 192.168.101.136: [Errno 111] Connection refused
+Error scanning 192.168.101.137: [Errno 111] Connection refused
+Error scanning 192.168.101.140: [Errno 111] Connection refused
+Error scanning 192.168.101.141: [Errno 111] Connection refused
+Error scanning 192.168.101.143: [Errno 111] Connection refused
+Error scanning 192.168.101.147: [Errno 111] Connection refused
+Error scanning 192.168.101.148: [Errno 111] Connection refused
+Error scanning 192.168.101.149: [Errno 111] Connection refused
+Error scanning 192.168.101.150: [Errno 111] Connection refused
+Error scanning 192.168.101.176: [Errno 111] Connection refused
+
+Error scanning 192.168.2.0: [Errno 101] Network is unreachable
+Error scanning 192.168.2.1: [Errno 111] Connection refused
+Error scanning 192.168.2.103: [Errno 111] Connection refused
+Could not connect to SMB server at 192.168.2.105.
+Error scanning 192.168.2.134: [Errno 111] Connection refused
+Error scanning 192.168.2.147: [Errno 111] Connection refused
+Error scanning 192.168.2.153: [Errno 111] Connection refused
+Error scanning 192.168.2.158: [Errno 111] Connection refused
+Error scanning 192.168.2.160: [Errno 111] Connection refused
+
+SMBConnection imported successfully.
+Error scanning 192.168.62.1: [Errno 111] Connection refused
+Error scanning 192.168.62.3: [Errno 111] Connection refused
+Error scanning 192.168.62.19: [Errno 111] Connection refused
+Error scanning 192.168.62.25: [Errno 111] Connection refused
+Error scanning 192.168.62.26: [Errno 111] Connection refused
+
+
+
+
+Port 22 is open on 192.168.0.1
+Port 22 is open on 192.168.0.65
+Port 80 is open on 192.168.0.1
+Port 53 is open on 192.168.0.64
+Port 80 is open on 192.168.0.64
+Port 80 is open on 192.168.0.65
+Port 135 is open on 192.168.0.64
+Port 139 is open on 192.168.0.64
+Port 256 is open on 192.168.0.1
+Port 257 is open on 192.168.0.1
+Port 264 is open on 192.168.0.1
+Port 443 is open on 192.168.0.1
+Port 500 is open on 192.168.0.1
+Port 445 is open on 192.168.0.64
+Port 453 is open on 192.168.0.64
+Port 900 is open on 192.168.0.1
+Port 1720 is open on 192.168.0.1
+Port 1433 is open on 192.168.0.64
+Port 1720 is open on 192.168.0.65
+Port 1720 is open on 192.168.0.64
+Port 1801 is open on 192.168.0.64
+Port 2103 is open on 192.168.0.64
+Port 2105 is open on 192.168.0.64
+Port 2107 is open on 192.168.0.64
+Port 2383 is open on 192.168.0.64
+Port 3306 is open on 192.168.0.65
+Port 3306 is open on 192.168.0.64
+Port 3389 is open on 192.168.0.64
+Port 4465 is open on 192.168.0.64
+Port 4466 is open on 192.168.0.64
+Port 4467 is open on 192.168.0.64
+Port 4468 is open on 192.168.0.64
+Port 4469 is open on 192.168.0.64
+Port 4471 is open on 192.168.0.64
+Port 4480 is open on 192.168.0.64
+Port 4485 is open on 192.168.0.64
+Port 4486 is open on 192.168.0.64
+Port 4490 is open on 192.168.0.64
+Port 4881 is open on 192.168.0.64
+Port 5985 is open on 192.168.0.64
+Port 6061 is open on 192.168.0.64
+Port 6062 is open on 192.168.0.64
+Port 6063 is open on 192.168.0.64
+Port 6064 is open on 192.168.0.64
+Port 6065 is open on 192.168.0.64
+Port 11680 is open on 192.168.0.1
+Port 7045 is open on 192.168.0.64
+Port 7046 is open on 192.168.0.64
+Port 7048 is open on 192.168.0.64
+Port 12873 is open on 192.168.0.1
+Port 8067 is open on 192.168.0.64
+Port 8080 is open on 192.168.0.64
+Port 15105 is open on 192.168.0.1
+Port 9045 is open on 192.168.0.64
+Port 9046 is open on 192.168.0.64
+Port 9047 is open on 192.168.0.64
+Port 9048 is open on 192.168.0.64
+Port 9049 is open on 192.168.0.64
+Port 17000 is open on 192.168.0.1
+Port 18183 is open on 192.168.0.1
+Port 18184 is open on 192.168.0.1
+Port 18187 is open on 192.168.0.1
+Port 18191 is open on 192.168.0.1
+Port 18192 is open on 192.168.0.1
+Port 18208 is open on 192.168.0.1
+Port 18264 is open on 192.168.0.1
+Port 28581 is open on 192.168.0.1
+Port 33060 is open on 192.168.0.64
+Port 44652 is open on 192.168.0.64
+Port 47001 is open on 192.168.0.64
+Port 49664 is open on 192.168.0.64
+Port 49665 is open on 192.168.0.64
+Port 49666 is open on 192.168.0.64
+Port 49667 is open on 192.168.0.64
+Port 49668 is open on 192.168.0.64
+Port 49670 is open on 192.168.0.64
+Port 49671 is open on 192.168.0.64
+Port 49672 is open on 192.168.0.64
+Port 49790 is open on 192.168.0.64
+Port 38731 is open on 192.168.0.1
+Port 40183 is open on 192.168.0.1
+Port 42355 is open on 192.168.0.1
+Port 42670 is open on 192.168.0.1
+Port 42678 is open on 192.168.0.1
+Port 45162 is open on 192.168.0.1
+Port 47920 is open on 192.168.0.1
+
+Port 22 is open on 192.168.0.1
+Port 80 is open on 192.168.0.1
+Port 22 is open on 192.168.0.2
+Port 443 is open on 192.168.0.1
+Port 80 is open on 192.168.0.2
+Port 22 is open on 192.168.0.16
+Port 443 is open on 192.168.0.2
+Port 80 is open on 192.168.0.16
+Port 443 is open on 192.168.0.16
+Port 22 is open on 192.168.0.18
+Port 80 is open on 192.168.0.18
+Port 22 is open on 192.168.0.63
+Port 22 is open on 192.168.0.65
+Port 80 is open on 192.168.0.63
+Port 80 is open on 192.168.0.64
+Port 80 is open on 192.168.0.65
+Port 22 is open on 192.168.0.79
+Port 443 is open on 192.168.0.63
+Port 80 is open on 192.168.0.79
+Port 8080 is open on 192.168.0.64
+Port 443 is open on 192.168.0.79
+Port 3306 is open on 192.168.0.65
+Port 3306 is open on 192.168.0.64
+Port 22 is open on 192.168.1.1
+Port 22 is open on 192.168.1.6
+Port 22 is open on 192.168.1.9
+Port 80 is open on 192.168.1.1
+Port 443 is open on 192.168.1.1
+Port 80 is open on 192.168.1.9
+Port 443 is open on 192.168.1.9
+Port 22 is open on 192.168.0.69
+Port 80 is open on 192.168.0.69
+Port 22 is open on 192.168.2.1
+Port 80 is open on 192.168.2.1
+Port 443 is open on 192.168.2.1
+Port 22 is open on 192.168.2.103
+Port 80 is open on 192.168.2.103
+Port 443 is open on 192.168.2.103
+Port 80 is open on 192.168.2.105
+Port 443 is open on 192.168.2.105
+Port 22 is open on 192.168.2.134
+Port 80 is open on 192.168.2.134
+Port 22 is open on 192.168.2.147
+Port 80 is open on 192.168.2.147
+Port 8080 is open on 192.168.2.134
+Port 3306 is open on 192.168.2.134
+Port 22 is open on 192.168.2.153
+Port 3306 is open on 192.168.2.147
+Port 80 is open on 192.168.2.153
+Port 22 is open on 192.168.2.158
+Port 22 is open on 192.168.2.160
+Port 80 is open on 192.168.2.158
+Port 443 is open on 192.168.2.158
+Port 8080 is open on 192.168.2.160
+Port 22 is open on 192.168.3.1
+Port 80 is open on 192.168.3.1
+Port 443 is open on 192.168.3.1
+Port 22 is open on 192.168.3.103
+Port 22 is open on 192.168.3.104
+Port 80 is open on 192.168.3.104
+Port 80 is open on 192.168.3.103
+Port 443 is open on 192.168.3.104
+Port 443 is open on 192.168.3.103
+Port 22 is open on 192.168.3.139
+Port 80 is open on 192.168.3.139
+Port 443 is open on 192.168.3.139
+Port 22 is open on 192.168.3.147
+Port 80 is open on 192.168.3.147
+Port 3306 is open on 192.168.3.147
+Port 22 is open on 192.168.3.160
+Port 8080 is open on 192.168.3.160
+Port 22 is open on 192.168.8.2
+Port 22 is open on 192.168.8.102
+Port 80 is open on 192.168.8.102
+Port 22 is open on 192.168.8.117
+Port 22 is open on 192.168.8.120
+Port 22 is open on 192.168.8.116
+Port 22 is open on 192.168.8.119
+Port 80 is open on 192.168.8.120
+Port 80 is open on 192.168.8.119
+Port 8080 is open on 192.168.8.117
+Port 80 is open on 192.168.8.116
+Port 22 is open on 192.168.8.118
+Port 80 is open on 192.168.8.118
+Port 22 is open on 192.168.8.137
+Port 22 is open on 192.168.8.138
+Port 22 is open on 192.168.8.160
+Port 8080 is open on 192.168.8.160
+Port 22 is open on 192.168.10.1
+Port 80 is open on 192.168.10.1
+Port 22 is open on 192.168.10.2
+Port 443 is open on 192.168.10.1
+Port 80 is open on 192.168.10.2
+Port 443 is open on 192.168.10.2
+Port 22 is open on 192.168.12.2
+Port 80 is open on 192.168.12.2
+Port 22 is open on 192.168.12.6
+Port 443 is open on 192.168.12.2
+Port 80 is open on 192.168.12.6
+Port 443 is open on 192.168.12.6
+Port 22 is open on 192.168.13.2
+Port 22 is open on 192.168.13.1
+Port 80 is open on 192.168.13.1
+Port 443 is open on 192.168.13.1
+Port 22 is open on 192.168.13.102
+Port 80 is open on 192.168.13.102
+Port 22 is open on 192.168.16.1
+Port 80 is open on 192.168.16.1
+Port 443 is open on 192.168.16.1
+Port 8080 is open on 192.168.0.69
+Port 5432 is open on 192.168.0.69
+Port 22 is open on 192.168.20.1
+Port 80 is open on 192.168.20.1
+Port 22 is open on 192.168.20.11
+Port 443 is open on 192.168.20.1
+Port 22 is open on 192.168.20.13
+Port 22 is open on 192.168.20.9
+Port 80 is open on 192.168.20.11
+Port 22 is open on 192.168.20.17
+Port 80 is open on 192.168.20.9
+Port 443 is open on 192.168.20.9
+Port 22 is open on 192.168.20.12
+Port 22 is open on 192.168.20.14
+Port 22 is open on 192.168.20.21
+Port 22 is open on 192.168.20.20
+Port 22 is open on 192.168.20.15
+Port 22 is open on 192.168.20.18
+Port 22 is open on 192.168.20.19
+Port 22 is open on 192.168.20.22
+Port 80 is open on 192.168.20.21
+Port 5432 is open on 192.168.20.13
+Port 80 is open on 192.168.20.20
+Port 80 is open on 192.168.20.22
+Port 5432 is open on 192.168.20.17
+Port 8080 is open on 192.168.20.15
+Port 8080 is open on 192.168.20.20
+Port 22 is open on 192.168.22.1
+Port 80 is open on 192.168.22.1
+Port 443 is open on 192.168.22.1
+Port 80 is open on 192.168.22.76
+Port 80 is open on 192.168.22.3
+Port 443 is open on 192.168.22.76
+Port 80 is open on 192.168.22.4
+Port 80 is open on 192.168.22.44
+Port 80 is open on 192.168.22.37
+Port 80 is open on 192.168.22.36
+Port 22 is open on 192.168.62.1
+Port 80 is open on 192.168.62.1
+Port 22 is open on 192.168.62.26
+Port 22 is open on 192.168.62.3
+Port 22 is open on 192.168.62.19
+Port 80 is open on 192.168.62.3
+Port 22 is open on 192.168.62.25
+Port 80 is open on 192.168.62.19
+Port 80 is open on 192.168.62.26
+Port 443 is open on 192.168.62.3
+Port 80 is open on 192.168.62.25
+Port 5432 is open on 192.168.62.19
+Port 3306 is open on 192.168.62.25
+Port 443 is open on 192.168.62.1
+Port 22 is open on 192.168.67.1
+Port 80 is open on 192.168.67.1
+Port 443 is open on 192.168.67.1
+Port 22 is open on 192.168.100.1
+Port 22 is open on 192.168.100.2
+Port 80 is open on 192.168.100.1
+Port 443 is open on 192.168.100.1
+Port 22 is open on 192.168.100.46
+Port 80 is open on 192.168.100.46
+Port 22 is open on 192.168.100.53
+Port 443 is open on 192.168.100.46
+Port 22 is open on 192.168.100.57
+Port 22 is open on 192.168.100.54
+Port 22 is open on 192.168.100.58
+Port 22 is open on 192.168.100.52
+Port 22 is open on 192.168.100.60
+Port 80 is open on 192.168.100.58
+Port 22 is open on 192.168.100.59
+Port 80 is open on 192.168.100.57
+Port 80 is open on 192.168.100.60
+Port 443 is open on 192.168.100.52
+Port 22 is open on 192.168.100.64
+Port 80 is open on 192.168.100.59
+Port 22 is open on 192.168.100.68
+Port 22 is open on 192.168.100.69
+Port 22 is open on 192.168.100.70
+Port 80 is open on 192.168.100.68
+Port 22 is open on 192.168.100.73
+Port 22 is open on 192.168.100.71
+Port 22 is open on 192.168.100.72
+Port 5432 is open on 192.168.100.69
+Port 22 is open on 192.168.100.74
+Port 22 is open on 192.168.100.75
+Port 80 is open on 192.168.100.71
+Port 80 is open on 192.168.100.74
+Port 80 is open on 192.168.100.75
+Port 3306 is open on 192.168.100.73
+Port 5432 is open on 192.168.100.64
+Port 5432 is open on 192.168.100.68
+Port 3306 is open on 192.168.100.74
+Port 22 is open on 192.168.100.102
+Port 22 is open on 192.168.100.103
+Port 80 is open on 192.168.100.102
+Port 22 is open on 192.168.100.104
+Port 80 is open on 192.168.100.103
+Port 22 is open on 192.168.100.106
+Port 22 is open on 192.168.100.107
+Port 80 is open on 192.168.100.104
+Port 443 is open on 192.168.100.104
+Port 22 is open on 192.168.100.108
+Port 22 is open on 192.168.100.109
+Port 80 is open on 192.168.100.106
+Port 80 is open on 192.168.100.107
+Port 80 is open on 192.168.100.109
+Port 80 is open on 192.168.100.108
+Port 22 is open on 192.168.100.110
+Port 443 is open on 192.168.100.103
+Port 80 is open on 192.168.100.110
+Port 22 is open on 192.168.100.115
+Port 22 is open on 192.168.100.116
+Port 80 is open on 192.168.100.113
+Port 22 is open on 192.168.100.118
+Port 80 is open on 192.168.100.114
+Port 22 is open on 192.168.100.120
+Port 80 is open on 192.168.100.115
+Port 80 is open on 192.168.100.116
+Port 22 is open on 192.168.100.119
+Port 22 is open on 192.168.100.117
+Port 22 is open on 192.168.100.121
+Port 22 is open on 192.168.100.122
+Port 80 is open on 192.168.100.120
+Port 80 is open on 192.168.100.118
+Port 80 is open on 192.168.100.119
+Port 22 is open on 192.168.100.123
+Port 22 is open on 192.168.100.124
+Port 8080 is open on 192.168.100.113
+Port 8080 is open on 192.168.100.114
+Port 8080 is open on 192.168.100.117
+Port 5432 is open on 192.168.100.124
+Port 6432 is open on 192.168.100.121
+Port 5432 is open on 192.168.100.122
+Port 80 is open on 192.168.100.105
+Port 22 is open on 192.168.100.129
+Port 5432 is open on 192.168.100.123
+Port 22 is open on 192.168.100.130
+Port 80 is open on 192.168.100.129
+Port 80 is open on 192.168.100.130
+Port 22 is open on 192.168.100.131
+Port 80 is open on 192.168.100.132
+Port 80 is open on 192.168.100.131
+Port 22 is open on 192.168.100.134
+Port 22 is open on 192.168.100.136
+Port 22 is open on 192.168.100.137
+Port 80 is open on 192.168.100.136
+Port 22 is open on 192.168.100.138
+Port 22 is open on 192.168.100.139
+Port 80 is open on 192.168.100.134
+Port 22 is open on 192.168.100.140
+Port 80 is open on 192.168.100.139
+Port 443 is open on 192.168.100.139
+Port 22 is open on 192.168.100.143
+Port 22 is open on 192.168.100.141
+Port 80 is open on 192.168.100.141
+Port 8080 is open on 192.168.100.134
+Port 3306 is open on 192.168.100.134
+Port 22 is open on 192.168.100.147
+Port 80 is open on 192.168.100.147
+Port 22 is open on 192.168.100.153
+Port 22 is open on 192.168.100.160
+Port 80 is open on 192.168.100.152
+Port 80 is open on 192.168.100.153
+Port 22 is open on 192.168.100.159
+Port 22 is open on 192.168.100.158
+Port 3306 is open on 192.168.100.147
+Port 80 is open on 192.168.100.158
+Port 80 is open on 192.168.100.151
+Port 22 is open on 192.168.100.163
+Port 443 is open on 192.168.100.158
+Port 443 is open on 192.168.100.105
+Port 80 is open on 192.168.100.163
+Port 8080 is open on 192.168.100.160
+Port 443 is open on 192.168.100.163
+Port 5432 is open on 192.168.100.159
+Port 22 is open on 192.168.100.170
+Port 22 is open on 192.168.100.171
+Port 80 is open on 192.168.100.171
+Port 22 is open on 192.168.100.173
+Port 5432 is open on 192.168.100.170
+Port 22 is open on 192.168.100.179
+Port 22 is open on 192.168.100.191
+Port 22 is open on 192.168.100.192
+Port 80 is open on 192.168.100.191
+Port 22 is open on 192.168.100.193
+Port 80 is open on 192.168.100.192
+Port 443 is open on 192.168.100.191
+Port 22 is open on 192.168.100.195
+Port 5432 is open on 192.168.100.179
+Port 8080 is open on 192.168.100.192
+Port 8080 is open on 192.168.100.193
+Port 22 is open on 192.168.101.51
+Port 80 is open on 192.168.101.51
+Port 22 is open on 192.168.101.64
+Port 22 is open on 192.168.101.68
+Port 80 is open on 192.168.101.64
+Port 80 is open on 192.168.101.68
+Port 443 is open on 192.168.101.64
+Port 443 is open on 192.168.101.68
+Port 22 is open on 192.168.101.70
+Port 22 is open on 192.168.101.86
+Port 80 is open on 192.168.101.86
+Port 80 is open on 192.168.101.99
+Port 443 is open on 192.168.101.99
+Port 443 is open on 192.168.101.86
+Port 22 is open on 192.168.101.118
+Port 8080 is open on 192.168.101.99
+Port 22 is open on 192.168.101.137
+Port 22 is open on 192.168.101.136
+Port 80 is open on 192.168.101.118
+Port 22 is open on 192.168.101.143
+Port 22 is open on 192.168.101.141
+Port 80 is open on 192.168.101.141
+Port 443 is open on 192.168.101.118
+Port 22 is open on 192.168.101.149
+Port 443 is open on 192.168.101.141
+Port 22 is open on 192.168.101.148
+Port 80 is open on 192.168.101.148
+Port 80 is open on 192.168.101.149
+Port 22 is open on 192.168.101.150
+Port 443 is open on 192.168.101.148
+Port 22 is open on 192.168.101.176
+Port 22 is open on 192.168.101.198
+Port 22 is open on 192.168.102.6
+Port 80 is open on 192.168.102.4
+Port 80 is open on 192.168.102.7
+Port 5432 is open on 192.168.101.198
+Port 80 is open on 192.168.102.9
+Port 80 is open on 192.168.102.6
+Port 80 is open on 192.168.102.11
+Port 22 is open on 192.168.102.18
+Port 80 is open on 192.168.102.10
+Port 80 is open on 192.168.102.3
+Port 80 is open on 192.168.102.44
+Port 22 is open on 192.168.102.17
+Port 80 is open on 192.168.102.16
+Port 22 is open on 192.168.102.81
+Port 80 is open on 192.168.102.17
+Port 80 is open on 192.168.102.31
+Port 80 is open on 192.168.102.30
+Port 80 is open on 192.168.102.20
+Port 80 is open on 192.168.102.29
+Port 80 is open on 192.168.102.38
+Port 80 is open on 192.168.102.81
+Port 80 is open on 192.168.102.37
+Port 80 is open on 192.168.102.76
+Port 8080 is open on 192.168.102.13
+Port 443 is open on 192.168.102.76
+Port 22 is open on 192.168.103.1
+Port 80 is open on 192.168.103.1
+Port 443 is open on 192.168.103.1
+Port 22 is open on 192.168.102.80
+Port 80 is open on 192.168.102.80
+Port 8080 is open on 192.168.102.77
+Port 22 is open on 192.168.102.79
+Port 5432 is open on 192.168.102.77
+Port 80 is open on 192.168.102.79
+Port 8080 is open on 192.168.101.147
+Port 80 is open on 192.168.100.157
+Port 80 is open on 192.168.102.14
+Port 80 is open on 192.168.102.12
+Port 443 is open on 192.168.102.14
+Port 8080 is open on 192.168.102.14
+Port 80 is open on 192.168.102.34
+Port 80 is open on 192.168.102.36
+Port 443 is open on 192.168.102.34
+Port 8080 is open on 192.168.102.34
+Port 8080 is open on 192.168.100.157
+Port 8080 is open on 192.168.102.12
+Port 5432 is open on 192.168.102.22
+Port 5432 is open on 192.168.102.23
+
+
+Scanning 192.168.0.64...
+Port 53 is open on 192.168.0.64 (domain)
+Port 80 is open on 192.168.0.64 (http)
+Port 135 is open on 192.168.0.64 (loc-srv)
+Port 139 is open on 192.168.0.64 (netbios-ssn)
+Port 445 is open on 192.168.0.64 (microsoft-ds)
+Port 453 is open on 192.168.0.64 (Unknown Service)
+Port 1433 is open on 192.168.0.64 (ms-sql-s)
+Port 1720 is open on 192.168.0.64 (Unknown Service)
+Port 1801 is open on 192.168.0.64 (Unknown Service)
+Port 2103 is open on 192.168.0.64 (Unknown Service)
+Port 2105 is open on 192.168.0.64 (eklogin)
+Port 2107 is open on 192.168.0.64 (Unknown Service)
+Port 2383 is open on 192.168.0.64 (Unknown Service)
+Port 3306 is open on 192.168.0.64 (mysql)
+Port 3389 is open on 192.168.0.64 (Unknown Service)
+Port 4465 is open on 192.168.0.64 (Unknown Service)
+Port 4466 is open on 192.168.0.64 (Unknown Service)
+Port 4467 is open on 192.168.0.64 (Unknown Service)
+Port 4468 is open on 192.168.0.64 (Unknown Service)
+Port 4469 is open on 192.168.0.64 (Unknown Service)
+Port 4471 is open on 192.168.0.64 (Unknown Service)
+Port 4480 is open on 192.168.0.64 (Unknown Service)
+Port 4485 is open on 192.168.0.64 (Unknown Service)
+Port 4486 is open on 192.168.0.64 (Unknown Service)
+Port 4490 is open on 192.168.0.64 (Unknown Service)
+Port 4881 is open on 192.168.0.64 (Unknown Service)
+Port 5985 is open on 192.168.0.64 (Unknown Service)
+Port 6061 is open on 192.168.0.64 (Unknown Service)
+Port 6062 is open on 192.168.0.64 (Unknown Service)
+Port 6063 is open on 192.168.0.64 (Unknown Service)
+Port 6064 is open on 192.168.0.64 (Unknown Service)
+Port 6065 is open on 192.168.0.64 (Unknown Service)
+Port 7045 is open on 192.168.0.64 (Unknown Service)
+Port 7046 is open on 192.168.0.64 (Unknown Service)
+Port 7048 is open on 192.168.0.64 (Unknown Service)
+Port 8067 is open on 192.168.0.64 (Unknown Service)
+Port 8080 is open on 192.168.0.64 (http-alt)
+Port 9045 is open on 192.168.0.64 (Unknown Service)
+Port 9046 is open on 192.168.0.64 (Unknown Service)
+Port 9047 is open on 192.168.0.64 (Unknown Service)
+Port 9048 is open on 192.168.0.64 (Unknown Service)
+Port 9049 is open on 192.168.0.64 (Unknown Service)
+Port 33060 is open on 192.168.0.64 (Unknown Service)
+Port 44652 is open on 192.168.0.64 (Unknown Service)
+Port 47001 is open on 192.168.0.64 (Unknown Service)
+Port 49664 is open on 192.168.0.64 (Unknown Service)
+Port 49665 is open on 192.168.0.64 (Unknown Service)
+Port 49666 is open on 192.168.0.64 (Unknown Service)
+Port 49667 is open on 192.168.0.64 (Unknown Service)
+Port 49668 is open on 192.168.0.64 (Unknown Service)
+Port 49670 is open on 192.168.0.64 (Unknown Service)
+Port 49671 is open on 192.168.0.64 (Unknown Service)
+Port 49672 is open on 192.168.0.64 (Unknown Service)
+Port 49790 is open on 192.168.0.64 (Unknown Service)
