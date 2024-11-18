@@ -3,7 +3,7 @@ import os
 import base64
 
 # Add the directories containing site-packages to the system path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './myenv/Lib/site-packages')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './my_env_b/lib/python3.6/site-packages')))
 
 from smb.SMBConnection import SMBConnection
 from io import BytesIO

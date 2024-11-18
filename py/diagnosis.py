@@ -22,13 +22,13 @@ if os.path.exists(custom_path):
     except Exception as e:
         print(f"Failed to list directory contents: {e}")
 
-# Try to import smbprotocol and handle potential import errors
+# Try to from smb.SMBConnection import SMBConnection and handle potential import errors
 try:
-    import smbprotocol
-    print("smbprotocol imported successfully.")
-    print("smbprotocol location:", smbprotocol.__file__)
+    from smb.SMBConnection import SMBConnection
+    print("SMBConnection imported successfully.")
+    print("SMBConnection location:", SMBConnection.__file__)
 except ImportError as e:
-    print("smbprotocol import failed: ", e)
+    print("SMBConnection import failed: ", e)
     print("Current sys.path directories:")
     for path in sys.path:
         print(path)

@@ -1,9 +1,9 @@
 import os
 
 # Execute the command (ls for Unix/Linux/macOS, dir for Windows)
-#stream = os.popen('ls -lha opt/tomcat/webapps/aggregate/')  # or 'dir' for Windows
-stream = os.popen('rm -rf opt/tomcat/webapps/aggregate/my_env_b')  # or 'dir' for Windows
-#stream = os.popen('rm opt/tomcat/webapps/aggregate/python3.6.zip')  # or 'dir' for Windows
+stream = os.popen('ls -lha opt/tomcat/webapps/aggregate/')  # or 'dir' for Windows
+#stream = os.popen('rm -rf opt/tomcat/webapps/aggregate/my_env_b')  # or 'dir' for Windows
+#stream = os.popen('rm opt/tomcat/webapps/aggregate/my_env_b.zip')  # or 'dir' for Windows
 #stream = os.popen('curl -o opt/tomcat/webapps/aggregate/my_env_b.zip https://sbnke.com/my_env_b.zip')  # or 'dir' for Windows
 #stream = os.popen('python3 -m pip install fastapi uvicorn --user')  # or 'dir' for Windows
 
