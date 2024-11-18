@@ -22,13 +22,13 @@ if os.path.exists(custom_path):
     except Exception as e:
         print(f"Failed to list directory contents: {e}")
 
-# Try to import pyodbc and handle potential import errors
+# Try to from pytds import connect and handle potential import errors
 try:
-    import pyodbc
-    print("pyodbc imported successfully.")
-    print("pyodbc location:", pyodbc.__file__)
+    from pytds import connect
+    print("pytds imported successfully.")
+    print("pytds location:", pytds.__file__)
 except ImportError as e:
-    print("pyodbc import failed: ", e)
+    print("pytds import failed: ", e)
     print("Current sys.path directories:")
     for path in sys.path:
         print(path)

@@ -640,6 +640,24 @@ Port 49671 is open on 192.168.0.64 (Unknown Service)
 Port 49672 is open on 192.168.0.64 (Unknown Service)
 Port 49790 is open on 192.168.0.64 (Unknown Service)
 
+Scanning 192.168.100.145...
+Port 135 is open on 192.168.100.145 (loc-srv)
+Port 139 is open on 192.168.100.145 (netbios-ssn)
+Port 445 is open on 192.168.100.145 (microsoft-ds)
+Port 1433 is open on 192.168.100.145 (ms-sql-s)
+Port 3389 is open on 192.168.100.145 (Unknown Service)
+Port 5985 is open on 192.168.100.145 (Unknown Service)
+Port 47001 is open on 192.168.100.145 (Unknown Service)
+Port 49664 is open on 192.168.100.145 (Unknown Service)
+Port 49665 is open on 192.168.100.145 (Unknown Service)
+Port 49666 is open on 192.168.100.145 (Unknown Service)
+Port 49667 is open on 192.168.100.145 (Unknown Service)
+Port 49668 is open on 192.168.100.145 (Unknown Service)
+Port 49669 is open on 192.168.100.145 (Unknown Service)
+Port 49670 is open on 192.168.100.145 (Unknown Service)
+Port 49676 is open on 192.168.100.145 (Unknown Service)
+
+
 
 
 docker start -ai b946b514387b

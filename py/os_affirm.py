@@ -3,7 +3,7 @@ import os
 # Execute the command (ls for Unix/Linux/macOS, dir for Windows)
 
 json_payload = '''{
-    "apiKey": "",
+    "apiKey": "pCxSLqskWT7BuHj29Qty3DZXe4cUbfrENgaz5wM8KYAFVdRmGn",
     "type": null,
     "billNumber": "BL-UBP-192712",
     "billAmount": "7500.0",

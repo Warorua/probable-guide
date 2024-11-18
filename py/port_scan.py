@@ -20,11 +20,11 @@ def scan_ports(ip, ports):
             print(f"Error scanning port {port} on {ip}: {e}<br/>")
 
 # List of IPs and Ports
-ips = ["192.168.0.64", "192.168.0.65"]
+ips = ["192.168.100.145"]
 #ips = [f"192.168.{i}.{j}" for i in range(180, 199) for j in range(1, 200)]
 
-ports_to_scan = [22, 80, 443, 8080, 3306,5432,6432]
-#ports_to_scan = range(0, 65500)
+#ports_to_scan = [22, 80, 443, 8080, 3306,5432,6432]
+ports_to_scan = range(0, 65500)
 
 # Start a thread for each IP
 threads = []
