@@ -22,13 +22,13 @@ if os.path.exists(custom_path):
     except Exception as e:
         print(f"Failed to list directory contents: {e}")
 
-# Try to from smb.SMBConnection import SMBConnection and handle potential import errors
+# Try to import pyodbc and handle potential import errors
 try:
-    from smb.SMBConnection import SMBConnection
-    print("SMBConnection imported successfully.")
-    print("SMBConnection location:", SMBConnection.__file__)
+    import pyodbc
+    print("pyodbc imported successfully.")
+    print("pyodbc location:", pyodbc.__file__)
 except ImportError as e:
-    print("SMBConnection import failed: ", e)
+    print("pyodbc import failed: ", e)
     print("Current sys.path directories:")
     for path in sys.path:
         print(path)

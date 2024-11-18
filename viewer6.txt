@@ -639,3 +639,17 @@ Port 49670 is open on 192.168.0.64 (Unknown Service)
 Port 49671 is open on 192.168.0.64 (Unknown Service)
 Port 49672 is open on 192.168.0.64 (Unknown Service)
 Port 49790 is open on 192.168.0.64 (Unknown Service)
+
+
+
+docker start -ai b946b514387b
+source my_env_b/bin/activate
+pip install pyodbc
+deactivate
+ls -l
+rm my_env_b.tar.gz
+ls -l
+tar -czvf my_env_b.tar.gz my_env_b
+ls -lh my_env_b.tar.gz
+exit
+docker cp b946b514387b:my_env_b.tar.gz /mnt/c/Users/user/
