@@ -12,3 +12,30 @@
     - 192.168.100.159#
     - 192.168.102.22*#
     - 192.168.102.23
+
+bankTransactions - insert
+BankTransactionLog - insert
+bankTransactions_audit - upt
+transactions - upt
+
+
+
+Pull_Transaction
+lipaNaMpesa
+lipaNaMpesaView
+mpesaTransactions
+mpesaTransactionsView
+mpesaTransactions_audit
+transactions
+
+
+
+clients
+transactionSummary
+users
+
+
+mm_menu
+mm_permissions
+mm_role_permission
+mm_roles

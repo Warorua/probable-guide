@@ -8,16 +8,16 @@ import pymysql
 
 try:
     connection = pymysql.connect(
-        host='192.168.100.73',
-        user='root',
-        password='Happycoding',
-        database='db_api1_service',
+        host='srv677.hstgr.io',
+        user='u117204720_deepwoods',
+        password='Wj9|10g0oN',
+        database='u117204720_deepwoods',
         port=3306,  # Specify your MySQL port here
         connect_timeout=30  # Increased timeout for better stability
     )
 
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM bankTransactions ORDER BY id DESC LIMIT 200")
+    cursor.execute("SELECT user()")
     for row in cursor.fetchall():
         print(row)
 

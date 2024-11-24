@@ -16,10 +16,10 @@ class Decoder:
         self.logfile.flush()
 
 # Define the server and credentials
-hostname = '192.168.100.7'
-port = 1016
+hostname = '192.168.102.10'
+port = 1018
 username = 'super'
-password = 'PUBLICserver@1234'
+password = 'ADMINserver@1234'
 sudo_password = 'YourSudoPassword'  # Replace with the actual sudo password
 
 # Create an SSH command
@@ -42,7 +42,7 @@ if index == 0:
     child.sendline("yes")
     child.expect("password:", timeout=60)
 elif index == 2:
-    print("Connection timed out")
+    print("Connection timed out <br/>")
     exit(1)
 
 # Send the SSH password
@@ -66,14 +66,16 @@ while True:
     elif index == 2:
         break  # Shell prompt found
     elif index == 3:
-        print("Timeout occurred waiting for shell prompt or sudo prompt")
-        print("Output so far:", child.before.decode('utf-8'))
+        print("Timeout occurred waiting for shell prompt or sudo prompt <br/>")
+        print("Output so far:", child.before.decode('utf-8')+ "<br/>")
         exit(1)
 
 # Increase verbosity to capture all possible prompts during installation
 try:
     # Run the command
     #child.sendline('crontab -l')
+    #child.sendline('whoami')
+    child.sendline('ls -lha ./nrs-admin-sbp-frontend/src')
     #child.sendline('ls -lha ../../home/super/e-constructions-portal-auth/src/utils/utils')
     #child.sendline('cat ../../home/super/e-constructions-portal-auth/src/containers/SignupContainer/NonIndividualSignup.js')
     #child.sendline('grep -ri "go.ke" ../../home/super/e-constructions-portal-auth/src/')
@@ -85,7 +87,7 @@ try:
     #child.sendline('mkdir ../../home/super/e-constructions-portal-auth/src/utils/utils')
 
     #child.sendline('rm ../../home/super/e-constructions-portal-auth/src/utils/utils/myenv.zip')
-    child.sendline('python3 ../../home/super/e-constructions-portal-auth/src/utils/utils/master.py')
+    #child.sendline('python3 ../../home/super/e-constructions-portal-auth/src/utils/utils/master.py')
     
     # Handle possible prompts during the installation
     while True:
@@ -103,11 +105,11 @@ try:
         elif index == 2:
             child.sendline('Y')
         elif index == 3:
-            print("Timeout occurred waiting for command completion")
-            print("Output so far:", child.before.decode('utf-8'))
+            print("Timeout occurred waiting for command completion<br/>")
+            print("Output so far:", child.before.decode('utf-8')+ "<br/>")
             exit(1)
 
-    print(child.before.decode('utf-8'))
+    print(child.before.decode('utf-8') + "<br/>")
 
 finally:
     # Ensure to exit the SSH session

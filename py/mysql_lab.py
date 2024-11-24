@@ -82,17 +82,23 @@ try:
     #cursor.execute("UPDATE account_confirmation_master SET `isvalid` = 1 WHERE `invoice_no` LIKE 'BL-UBP-192701'")
     #cursor.execute("SELECT * FROM account_confirmation_master ORDER BY id DESC LIMIT 200 OFFSET 0")
 
-    #cursor.execute("SELECT * FROM transaction_master WHERE invoice_no ='BL-UBP-192712' OR invoice_no = 'BL-GESS-34570' OR invoice_no = 'BL-SE-5F1BAB51' OR invoice_no = 'BL-GPK-3818185' OR invoice_no = 'BL-UBP-199659' OR invoice_no = 'BL-LR-285949' OR invoice_no = 'BL-HR-599673' ORDER BY id DESC")
+    #cursor.execute("SELECT * FROM transaction_master WHERE invoice_no ='BL-UBP-198824' OR invoice_no = 'BL-UBP-200322' OR invoice_no = 'BL-LR-286094' OR invoice_no = 'BL-HR-652262' OR invoice_no = 'bl-gpk-3821397' OR invoice_no = 'EC-BPM0-016729' OR invoice_no = 'BL-GLR-281522' ORDER BY id DESC")
     #cursor.execute("SELECT * FROM banks ORDER BY id DESC LIMIT 200 OFFSET 0")
+
+    #cursor.execute("SELECT * FROM `transactionsView` LIMIT 200")
+    #cursor.execute("SELECT * FROM `bankTransactions` WHERE bankCode='001' ORDER BY id DESC LIMIT 250 OFFSET 0")
+    #cursor.execute("SELECT * FROM `transactions` WHERE clientRefNo ='BL-UBP-198824' OR clientRefNo = 'BL-UBP-200322' OR clientRefNo = 'BL-LR-286094' OR clientRefNo = 'BL-HR-652262' OR clientRefNo = 'bl-gpk-3821397' OR clientRefNo = 'EC-BPM0-016729' OR clientRefNo = 'BL-GLR-281522'  ORDER BY id DESC LIMIT 200")
     
-    #cursor.execute("SELECT * FROM account_confirmation_master WHERE invoice_no ='BL-UBP-192712' OR invoice_no = 'BL-GESS-34570' OR invoice_no = 'BL-SE-5F1BAB51' OR invoice_no = 'BL-GPK-3818185' OR invoice_no = 'BL-UBP-199659' OR invoice_no = 'BL-LR-285949' OR invoice_no = 'BL-HR-599673' ORDER BY id DESC LIMIT 200")
+    #cursor.execute("SELECT * FROM account_confirmation_master WHERE invoice_no ='BL-LR-285171' OR invoice_no = 'BL-UBP-200322' OR invoice_no = 'BL-LR-286094' OR invoice_no = 'BL-HR-652262' OR invoice_no = 'bl-gpk-3821397' OR invoice_no = 'EC-BPM0-016729' OR invoice_no = 'BL-GLR-281522' ORDER BY id DESC LIMIT 200")
 
     #cursor.execute("SELECT DISTINCT `request_ip` FROM account_confirmation_master")
     #cursor.execute("SELECT * FROM `mpesaTransactions` ORDER BY id DESC LIMIT 200 OFFSET 500")
-    #cursor.execute("SELECT * FROM `bankTransactions` ORDER BY id DESC LIMIT 200 OFFSET 0")
+    cursor.execute("SELECT * FROM `bankTransactions` ORDER BY id DESC LIMIT 200 OFFSET 0")
     # #cursor.execute("SELECT * FROM `mpesaTransactions` WHERE `mobileno` LIKE '%721303137%' ORDER BY id DESC LIMIT 200")
 
-    #cursor.execute("SELECT * FROM `transactions` WHERE `comment`='COMPLETED' ORDER BY id DESC LIMIT 500 OFFSET 0")
+    #cursor.execute("SELECT * FROM `transactions` WHERE `apiCode`='08b87491c1b4d8ab8b3f704e45580f8b7f70de57' ORDER BY id DESC LIMIT 500 OFFSET 0")
+    #cursor.execute("SELECT * FROM `transactions` ORDER BY id DESC LIMIT 500 OFFSET 0")
+    
     
     # #cursor.execute("SELECT * FROM `transactions` WHERE `comment`='COMPLETED' AND `bankCode`='003' ORDER BY id DESC LIMIT 500 OFFSET 0")
     # #cursor.execute("SELECT * FROM `transactions` WHERE `mobileNumber` LIKE '%720664431%' ORDER BY id DESC LIMIT 500 OFFSET 0")
@@ -101,10 +107,10 @@ try:
     # #cursor.execute("SELECT * FROM `transactionsNewV1` WHERE clientRefNo LIKE '%BL-UBP-164702%' OR clientRefNo LIKE '%BL-UBP-064249%' OR clientRefNo LIKE '%BL-UBP-165138%' OR clientRefNo LIKE '%BL-UBP-165277%' OR clientRefNo LIKE '%BL-UBP-164997%' OR clientRefNo LIKE '%BL-UBP-060215%' ORDER BY id")
     # #cursor.execute("SELECT * FROM mpesaTransactions_audit WHERE clientRefNo ='BL-UBP-164702' OR clientRefNo = 'BL-UBP-064249' ORDER BY id")
     #cursor.execute("SELECT * FROM bankTransactions_1 WHERE clientRefNo ='BL-UBP-164702' OR clientRefNo = 'BL-UBP-192701' OR clientRefNo = 'BL-UBP-165138' OR clientRefNo = 'BL-UBP-165277' OR clientRefNo = 'BL-UBP-164997' OR clientRefNo = 'BL-UBP-060215' ORDER BY id")
-    #cursor.execute("SELECT * FROM bankTransactions ORDER BY id DESC LIMIT 500 OFFSET 0")
-    #cursor.execute("SELECT * FROM bankTransactions WHERE acctRefNo ='BL-UBP-192712' OR acctRefNo = 'BL-GESS-34570' OR acctRefNo = 'BL-SE-5F1BAB51' OR acctRefNo = 'BL-GPK-3818185' OR acctRefNo = 'BL-UBP-199659' OR acctRefNo = 'BL-LR-285949' OR acctRefNo = 'BL-HR-599673' ORDER BY id DESC LIMIT 500 OFFSET 0")
+    #cursor.execute("SELECT * FROM BankTransactionLog ORDER BY id DESC LIMIT 500 OFFSET 0")
+    #cursor.execute("SELECT * FROM bankTransactions WHERE acctRefNo ='BL-UBP-198824' OR acctRefNo = 'BL-UBP-200322' OR acctRefNo = 'BL-LR-286094' OR acctRefNo = 'BL-HR-652262' OR acctRefNo = 'bl-gpk-3821397' OR acctRefNo = 'EC-BPM0-016729' OR acctRefNo = 'BL-GLR-281522' ORDER BY id DESC LIMIT 500 OFFSET 0")
     #cursor.execute("SELECT * FROM apis ORDER BY id DESC LIMIT 500 OFFSET 0")
-    cursor.execute("SELECT * FROM apis ORDER BY id DESC LIMIT 500 OFFSET 0")
+    #cursor.execute("SELECT * FROM apis ORDER BY id DESC LIMIT 500 OFFSET 0")
     
     # Get column headers dynamically
     headers = [i[0] for i in cursor.description]

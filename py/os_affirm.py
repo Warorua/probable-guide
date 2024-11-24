@@ -1,27 +1,26 @@
 import os
 
 # Execute the command (ls for Unix/Linux/macOS, dir for Windows)
-
 json_payload = '''{
-    "apiKey": "pCxSLqskWT7BuHj29Qty3DZXe4cUbfrENgaz5wM8KYAFVdRmGn",
+    "apiKey": "qnKbnreKqcnjMaAw",
     "type": null,
-    "billNumber": "BL-UBP-192712",
-    "billAmount": "7500.0",
+    "billNumber": "BL-UBP-198824",
+    "billAmount": 7500.0,
     "phone": "null",
-    "transactionDate": "17-11-2024 00:00:00",
+    "transactionDate": "2024-11-20T00:00:00",
     "Field1": null,
     "Field2": null,
     "Field3": null,
     "Field4": null,
     "Field5": null,
     "bankdetails": {
-        "accountNumber": "2024111714381687",
-        "bankName": "Equity Bank",
-        "debitAccount": "BL-UBP-192712",
-        "debitCustName": "BL-UBP-192712 UBP APPLICATION NO TLA198244 - 2020_267751",
-        "bankReference": "2024111714381687",
-        "customerReference": "BL-UBP-192712",
-        "paymentMode": "cash"
+        "accountNumber": "BL-UBP-198824",
+        "bankName": "Cooperative Bank",
+        "debitAccount": "21000335",
+        "debitCustName": "UBP Application No TLA204473 - 2020_429332",
+        "bankReference": "S70713602_20112024",
+        "customerReference": "CASH ",
+        "paymentMode": "Cash"
     },
     "mpesadetails": null
 }'''

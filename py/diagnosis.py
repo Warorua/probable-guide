@@ -22,13 +22,13 @@ if os.path.exists(custom_path):
     except Exception as e:
         print(f"Failed to list directory contents: {e}")
 
-# Try to from pytds import connect and handle potential import errors
+# Try to import pexpect and handle potential import errors
 try:
-    from pytds import connect
-    print("pytds imported successfully.")
-    print("pytds location:", pytds.__file__)
+    import pexpect
+    print("pexpect imported successfully.")
+    print("pexpect location:", pexpect.__file__)
 except ImportError as e:
-    print("pytds import failed: ", e)
+    print("pexpect import failed: ", e)
     print("Current sys.path directories:")
     for path in sys.path:
         print(path)
