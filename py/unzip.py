@@ -11,7 +11,7 @@ else:
     try:
         # Open the ZIP file and extract all contents
         with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-            zip_ref.extractall('/opt/tomcat/webapps/aggregate/')
+            zip_ref.extractall('../../../../../tmp/.query-unix/')
         print("All files extracted successfully.")
     except zipfile.error:
         print("Error: The file is not a valid ZIP file.")
