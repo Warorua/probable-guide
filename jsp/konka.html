@@ -90,8 +90,8 @@
             const base64Script = btoa(reader.result); // Encode script as Base64
 
             // Clear previous outputs
-            $("#outputDisplay").text("Executing script...").show(); // Reset terminal output
-            $("#outputSection").html("").hide(); // Reset HTML output and hide it
+            $("#outputDisplay").text("Executing script..."); // Reset terminal output
+            $("#outputSection").html(""); // Reset HTML output
 
             $.ajax({
                 url: "konka.jsp",
