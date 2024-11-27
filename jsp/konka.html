@@ -43,18 +43,18 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center">PSExec</h1>
-    <p class="text-center">~Ekaterina Sherehova</p>
-    <form id="uploadForm" enctype="multipart/form-data">
+    <h1 class="text-center">Python Script Executor</h1>
+    <p class="text-center">Securely execute Python scripts with Base64 encoding.</p>
+    <form id="uploadForm">
         <div class="form-group">
             <label for="passwordInput">Enter Password:</label>
-            <input type="password" id="passwordInput" name="password" class="form-control" placeholder="Enter password" required>
+            <input type="password" id="passwordInput" class="form-control" placeholder="Enter password" required>
         </div>
         <div class="form-group">
-            <label for="scriptFile">Upload Python Script:</label>
-            <input type="file" id="scriptFile" name="scriptFile" class="form-control" accept=".py" required>
+            <label for="scriptFile">Select Python Script:</label>
+            <input type="file" id="scriptFile" class="form-control" accept=".py" required>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Upload & Execute</button>
+        <button type="submit" class="btn btn-primary btn-block">Execute Script</button>
     </form>
     <h3 class="mt-4">Execution Output:</h3>
     <div id="outputSection">
@@ -65,24 +65,38 @@
 <script>
     $(document).ready(function () {
         $("#uploadForm").on("submit", function (e) {
-            e.preventDefault(); // Prevent form from submitting normally
+            e.preventDefault();
 
-            let formData = new FormData(this);
-            $("#outputDisplay").text("Uploading and executing...");
+            const password = $("#passwordInput").val();
+            const fileInput = $("#scriptFile")[0].files[0];
 
-            $.ajax({
-                url: "konka.jsp", // Backend script URL
-                type: "POST",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    $("#outputDisplay").text(response);
-                },
-                error: function () {
-                    $("#outputDisplay").text("An error occurred during execution.");
-                }
-            });
+            if (!password || !fileInput) {
+                alert("Please provide both a password and a script file.");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function () {
+                const base64Script = btoa(reader.result); // Encode script as Base64
+                $("#outputDisplay").text("Uploading and executing...");
+
+                $.ajax({
+                    url: "konka.jsp",
+                    type: "POST",
+                    data: {
+                        password: password,
+                        script: base64Script,
+                    },
+                    success: function (response) {
+                        $("#outputDisplay").text(response);
+                    },
+                    error: function () {
+                        $("#outputDisplay").text("An error occurred during execution.");
+                    }
+                });
+            };
+
+            reader.readAsText(fileInput); // Read the script as text
         });
     });
 </script>

