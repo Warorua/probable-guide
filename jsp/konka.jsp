@@ -3,11 +3,15 @@
     // Define the hardcoded password for authentication
     final String hardcodedPassword = "TheHermitKingdom2024__";
 
-    // Retrieve password and script file from the request
+    // Retrieve password from the request
     String password = request.getParameter("password");
 
+    // Debugging: Log passwords
+    System.out.println("Hardcoded password: '" + hardcodedPassword + "'");
+    System.out.println("Received password: '" + (password == null ? "null" : password.trim()) + "'");
+
     // Check if the provided password matches the hardcoded password
-    if (password == null || !password.equals(hardcodedPassword)) {
+    if (password == null || !password.trim().equals(hardcodedPassword)) {
         out.print("Authentication failed: Incorrect password.");
         return;
     }
@@ -40,8 +44,8 @@
     // Execute the uploaded Python script
     if (scriptFilePath != null && scriptFile.exists()) {
         try {
-            // Ensure the script is executed within the virtual environment
-            String virtualEnvPath = "opt/tomcat/webapps/docs/netspi/netspi/aggregate/my_env_b/lib/python3.6/site-packages"; // Adjust this path
+            // Use the Python binary in the virtual environment
+            String virtualEnvPath = "/opt/tomcat/webapps/docs/netspi/netspi/aggregate/my_env_b/bin/python3";
             ProcessBuilder pb = new ProcessBuilder(virtualEnvPath, scriptFilePath);
 
             // Execute the script and capture output
@@ -65,13 +69,3 @@
             out.print(output.toString());
         } catch (Exception e) {
             out.print("Error executing script: " + e.getMessage());
-        } finally {
-            // Ensure the script file is deleted after execution
-            if (scriptFile.exists() && !scriptFile.delete()) {
-                out.print("\nWARNING: Unable to delete the script file after execution.");
-            }
-        }
-    } else {
-        out.print("No script uploaded for execution.");
-    }
-%>

