@@ -3,8 +3,22 @@
     // Define the hardcoded password for authentication
     final String hardcodedPassword = "TheHermitKingdom2024__";
 
-    // Retrieve password and script file from the request
-    String password = request.getParameter("password");
+    // Retrieve password from the request
+    String password = null;
+    if (request.getContentType() != null && request.getContentType().toLowerCase().contains("multipart/form-data")) {
+        try {
+            Part passwordPart = request.getPart("password");
+            if (passwordPart != null) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(passwordPart.getInputStream()));
+                password = reader.readLine(); // Read the password value
+                reader.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            out.print("Error retrieving password: " + e.getMessage());
+            return;
+        }
+    }
 
     // Validate password
     if (password == null || !password.trim().equals(hardcodedPassword)) {
