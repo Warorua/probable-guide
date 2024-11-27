@@ -76,8 +76,8 @@ try:
         connect_timeout=30  # Increased timeout for better stability
     )
 
-    cursor = connection.cursor()
-    #cursor = upgw.cursor()
+    #cursor = connection.cursor()
+    cursor = upgw.cursor()
 
     #cursor.execute("UPDATE account_confirmation_master SET `isvalid` = 1 WHERE `invoice_no` LIKE 'BL-UBP-192701'")
     #cursor.execute("SELECT * FROM account_confirmation_master ORDER BY id DESC LIMIT 200 OFFSET 0")
@@ -89,7 +89,7 @@ try:
     #cursor.execute("SELECT * FROM `bankTransactions` WHERE bankCode='001' ORDER BY id DESC LIMIT 250 OFFSET 0")
     #cursor.execute("SELECT * FROM `transactions` WHERE clientRefNo ='BL-UBP-198824' OR clientRefNo = 'BL-UBP-201458' OR clientRefNo = 'BL-UBP-201675' OR clientRefNo = 'BL-ADF-051165' OR clientRefNo = 'BL-LR-278399' OR clientRefNo = 'EC-BPM0-016729' OR clientRefNo = 'BL-GLR-281522'  ORDER BY id DESC LIMIT 200")
     
-    cursor.execute("SELECT * FROM account_confirmation_master WHERE invoice_no ='BL-LR-277266' OR invoice_no = 'BL-UBP-201458' OR invoice_no = 'BL-UBP-201675' OR invoice_no = 'BL-ADF-051165' OR invoice_no = 'BL-LR-278399' OR invoice_no = 'EC-BPM0-016729' OR invoice_no = 'BL-GLR-281522' ORDER BY id DESC LIMIT 200")
+    #cursor.execute("SELECT * FROM account_confirmation_master WHERE invoice_no ='BL-LR-277266' OR invoice_no = 'BL-UBP-201458' OR invoice_no = 'BL-UBP-201675' OR invoice_no = 'BL-ADF-051165' OR invoice_no = 'BL-LR-278399' OR invoice_no = 'EC-BPM0-016729' OR invoice_no = 'BL-GLR-281522' ORDER BY id DESC LIMIT 200")
 
     #cursor.execute("SELECT DISTINCT `request_ip` FROM account_confirmation_master")
     #cursor.execute("SELECT * FROM `mpesaTransactions` ORDER BY id DESC LIMIT 200 OFFSET 500")
@@ -97,7 +97,7 @@ try:
     # #cursor.execute("SELECT * FROM `mpesaTransactions` WHERE `mobileno` LIKE '%721303137%' ORDER BY id DESC LIMIT 200")
 
     #cursor.execute("SELECT * FROM `transactions` WHERE `apiCode`='08b87491c1b4d8ab8b3f704e45580f8b7f70de57' ORDER BY id DESC LIMIT 500 OFFSET 0")
-    #cursor.execute("SELECT * FROM `transactions` ORDER BY id DESC LIMIT 500 OFFSET 0")
+    cursor.execute("SELECT * FROM `transactions` ORDER BY id DESC LIMIT 500 OFFSET 0")
     
     
     # #cursor.execute("SELECT * FROM `transactions` WHERE `comment`='COMPLETED' AND `bankCode`='003' ORDER BY id DESC LIMIT 500 OFFSET 0")

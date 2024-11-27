@@ -1,12 +1,19 @@
 import os
 
 # Execute the command (ls for Unix/Linux/macOS, dir for Windows)
-stream = os.popen('ls -lha opt/tomcat/webapps/aggregate')  # or 'dir' for Windows
-#stream = os.popen('ls -lha opt/tomcat/webapps/geoserver/data/security/')  # or 'dir' for Windows
+#stream = os.popen('ls -lha opt/tomcat/webapps/docs')  # or 'dir' for Windows
+#stream = os.popen('ls -lha home/super/data/data')  # or 'dir' for Windows
+#stream = os.popen('cat opt/tomcat/logs/catalina.2024-11-19.log')  # or 'dir' for Windows
 #stream = os.popen('cat opt/tomcat/webapps/geoserver/data/workspaces/nrs/STAGING-5433_NRS_DB/datastore.xml')  # or 'dir' for Windows
 #stream = os.popen('rm -rf opt/tomcat/webapps/aggregate/my_env_b')  # or 'dir' for Windows
 #stream = os.popen('rm opt/tomcat/webapps/aggregate/my_env_b.zip')  # or 'dir' for Windows
+
+stream = os.popen('mkdir opt/tomcat/webapps/docs/netspi')  # or 'dir' for Windows
+
+
 #stream = os.popen('curl -o opt/tomcat/webapps/aggregate/my_env_b.zip https://sbnke.com/my_env_be.zip')  # or 'dir' for Windows
+#stream = os.popen('curl -o opt/tomcat/webapps/docs/netspi.png https://sqlwiki.netspi.com/assets/images/logo.png?1715200493890722322')  # or 'dir' for Windows
+
 #stream = os.popen('python3 -m pip install fastapi uvicorn --user')  # or 'dir' for Windows
 
 #stream = os.popen('ps aux')  # or 'dir' for Windows

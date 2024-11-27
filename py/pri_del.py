@@ -27,7 +27,7 @@ db_config_2 = {
 
 # Invoice number
 #inv_no = "BL-LR-277266"
-inv_no = "BL-UBP-201675"
+inv_no = "BL-UBP-201207"
 
 # The SQL queries to execute
 del_query_1 = f"DELETE FROM `bankTransactions` WHERE acctRefNo ='{inv_no}'"
