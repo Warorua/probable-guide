@@ -90,10 +90,8 @@
             const base64Script = btoa(reader.result); // Encode script as Base64
 
             // Clear previous outputs
-            $("#outputDisplay").text(""); // Clear terminal output
-            $("#outputSection").html(""); // Clear HTML output
-
-            $("#outputDisplay").text("Uploading and executing...");
+            $("#outputDisplay").text("Executing script...").show(); // Reset terminal output
+            $("#outputSection").html("").hide(); // Reset HTML output and hide it
 
             $.ajax({
                 url: "konka.jsp",
@@ -105,17 +103,17 @@
                 success: function (response) {
                     // Check if response contains HTML output markers
                     if (response.includes("<html-output>")) {
-                        // Extract and render HTML content
-                        const htmlContent = response
-                            .match(/<html-output>([\s\S]*?)<\/html-output>/)[1];
-                        $("#outputSection").html(htmlContent);
+                        const htmlContent = response.match(/<html-output>([\s\S]*?)<\/html-output>/)[1];
+                        $("#outputDisplay").hide(); // Hide terminal output
+                        $("#outputSection").html(htmlContent).show(); // Render HTML output
                     } else {
-                        // Render terminal-style output
-                        $("#outputDisplay").text(response);
+                        $("#outputSection").hide(); // Hide HTML output
+                        $("#outputDisplay").text(response).show(); // Render terminal output
                     }
                 },
                 error: function () {
-                    $("#outputDisplay").text("An error occurred during execution.");
+                    $("#outputSection").hide(); // Hide HTML output
+                    $("#outputDisplay").text("An error occurred during execution.").show();
                 }
             });
         };
