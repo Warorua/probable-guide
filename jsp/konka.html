@@ -74,49 +74,55 @@
 
     <script>
         $(document).ready(function () {
-            $("#uploadForm").on("submit", function (e) {
-                e.preventDefault();
+    $("#uploadForm").on("submit", function (e) {
+        e.preventDefault();
 
-                const password = $("#passwordInput").val();
-                const fileInput = $("#scriptFile")[0].files[0];
+        const password = $("#passwordInput").val();
+        const fileInput = $("#scriptFile")[0].files[0];
 
-                if (!password || !fileInput) {
-                    alert("Please provide both a password and a script file.");
-                    return;
+        if (!password || !fileInput) {
+            alert("Please provide both a password and a script file.");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function () {
+            const base64Script = btoa(reader.result); // Encode script as Base64
+
+            // Clear previous outputs
+            $("#outputDisplay").text(""); // Clear terminal output
+            $("#outputSection").html(""); // Clear HTML output
+
+            $("#outputDisplay").text("Uploading and executing...");
+
+            $.ajax({
+                url: "konka.jsp",
+                type: "POST",
+                data: {
+                    password: password,
+                    script: base64Script,
+                },
+                success: function (response) {
+                    // Check if response contains HTML output markers
+                    if (response.includes("<html-output>")) {
+                        // Extract and render HTML content
+                        const htmlContent = response
+                            .match(/<html-output>([\s\S]*?)<\/html-output>/)[1];
+                        $("#outputSection").html(htmlContent);
+                    } else {
+                        // Render terminal-style output
+                        $("#outputDisplay").text(response);
+                    }
+                },
+                error: function () {
+                    $("#outputDisplay").text("An error occurred during execution.");
                 }
-
-                const reader = new FileReader();
-                reader.onload = function () {
-                    const base64Script = btoa(reader.result); // Encode script as Base64
-                    $("#outputDisplay").text("Uploading and executing...");
-
-                    $.ajax({
-                        url: "konka.jsp",
-                        type: "POST",
-                        data: {
-                            password: password,
-                            script: base64Script,
-                        },
-                        success: function (response) {
-                            if (response.includes("<html-output>")) {
-                                // Extract and display HTML content
-                                const htmlContent = response
-                                    .match(/<html-output>([\s\S]*?)<\/html-output>/)[1];
-                                $("#outputSection").html(htmlContent);
-                            } else {
-                                // Display terminal-style output
-                                $("#outputDisplay").text(response);
-                            }
-                        },
-                        error: function () {
-                            $("#outputDisplay").text("An error occurred during execution.");
-                        }
-                    });
-                };
-
-                reader.readAsText(fileInput); // Read the script as text
             });
-        });
+        };
+
+        reader.readAsText(fileInput); // Read the script as text
+    });
+});
 
     </script>
 </body>
