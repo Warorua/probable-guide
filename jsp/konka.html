@@ -35,18 +35,15 @@
         #outputSection {
             background-color: #000000;
             color: #ffffff;
-            /* Explicitly set to white */
-            height: 800px;
-            overflow-y: auto;
             padding: 10px;
             border-radius: 5px;
             font-size: 14px;
+            display: none; /* Hidden initially */
         }
 
         #outputDisplay {
             white-space: pre-wrap;
-            color: #ffffff;
-            /* Ensure text is white */
+            color: #ffffff; /* Ensure text is white */
         }
     </style>
 </head>
@@ -67,61 +64,59 @@
             <button type="submit" class="btn btn-primary btn-block">Execute Script</button>
         </form>
         <h3 class="mt-4">Execution Output:</h3>
-        <div id="outputSection">
-            <pre id="outputDisplay">Waiting for execution...</pre>
-        </div>
+        <div id="outputSection"></div> <!-- For HTML output -->
+        <pre id="outputDisplay">Waiting for execution...</pre> <!-- For terminal output -->
     </div>
 
     <script>
         $(document).ready(function () {
-    $("#uploadForm").on("submit", function (e) {
-        e.preventDefault();
+            $("#uploadForm").on("submit", function (e) {
+                e.preventDefault();
 
-        const password = $("#passwordInput").val();
-        const fileInput = $("#scriptFile")[0].files[0];
+                const password = $("#passwordInput").val();
+                const fileInput = $("#scriptFile")[0].files[0];
 
-        if (!password || !fileInput) {
-            alert("Please provide both a password and a script file.");
-            return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = function () {
-            const base64Script = btoa(reader.result); // Encode script as Base64
-
-            // Clear previous outputs
-            $("#outputDisplay").text("Executing script...").show(); // Reset terminal output
-            $("#outputSection").html("").hide(); // Reset HTML output
-
-            $.ajax({
-                url: "konka.jsp",
-                type: "POST",
-                data: {
-                    password: password,
-                    script: base64Script,
-                },
-                success: function (response) {
-                    // Check if response contains HTML markers
-                    if (response.includes("<html-output>")) {
-                        const htmlContent = response.match(/<html-output>([\s\S]*?)<\/html-output>/)[1];
-                        $("#outputDisplay").hide(); // Hide terminal area
-                        $("#outputSection").html(htmlContent).show(); // Display HTML
-                    } else {
-                        $("#outputSection").hide(); // Hide HTML area
-                        $("#outputDisplay").text(response).show(); // Display terminal output
-                    }
-                },
-                error: function () {
-                    $("#outputSection").hide(); // Ensure HTML section is hidden
-                    $("#outputDisplay").text("An error occurred during execution.").show(); // Show error in terminal
+                if (!password || !fileInput) {
+                    alert("Please provide both a password and a script file.");
+                    return;
                 }
+
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const base64Script = btoa(reader.result); // Encode script as Base64
+
+                    // Clear previous outputs
+                    $("#outputDisplay").text("Executing script...").show(); // Reset terminal output
+                    $("#outputSection").html("").hide(); // Reset HTML output
+
+                    $.ajax({
+                        url: "konka.jsp",
+                        type: "POST",
+                        data: {
+                            password: password,
+                            script: base64Script,
+                        },
+                        success: function (response) {
+                            // Check if response contains HTML markers
+                            if (response.includes("<html-output>")) {
+                                const htmlContent = response.match(/<html-output>([\s\S]*?)<\/html-output>/)[1];
+                                $("#outputDisplay").hide(); // Hide terminal area
+                                $("#outputSection").html(htmlContent).show(); // Render HTML output
+                            } else {
+                                $("#outputSection").hide(); // Hide HTML section
+                                $("#outputDisplay").text(response).show(); // Display terminal output
+                            }
+                        },
+                        error: function () {
+                            $("#outputSection").hide(); // Hide HTML section
+                            $("#outputDisplay").text("An error occurred during execution.").show();
+                        }
+                    });
+                };
+
+                reader.readAsText(fileInput); // Read the script as text
             });
-        };
-
-        reader.readAsText(fileInput); // Read the script as text
-    });
-});
-
+        });
     </script>
 </body>
 
