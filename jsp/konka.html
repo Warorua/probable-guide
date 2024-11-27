@@ -36,12 +36,11 @@
 
       #outputSection {
         background-color: #2b2b2b; /* Match container background */
-        color: #ffffff; /* Default text color */
         padding: 10px;
         border-radius: 5px;
         font-size: 14px;
         display: none; /* Hidden initially */
-        overflow-x: auto; /* Add horizontal scrolling for large tables */
+        overflow-x: auto; /* Allow horizontal scrolling for large tables */
       }
 
       #outputDisplay {
@@ -51,6 +50,29 @@
         padding: 10px;
         border-radius: 5px;
         overflow-y: auto;
+      }
+
+      #outputSection table {
+        color: #ffffff; /* Ensure text is white */
+        background-color: #2b2b2b; /* Default table background to match container */
+        border: 1px solid #444444; /* Subtle borders for readability */
+      }
+
+      #outputSection table th,
+      #outputSection table td {
+        background-color: #333333; /* Dark gray for cells */
+        color: #ffffff; /* White text for contrast */
+        padding: 10px; /* Add spacing for better readability */
+        border: 1px solid #444444; /* Subtle border for all cells */
+      }
+
+      #outputSection table th {
+        background-color: #444444; /* Slightly darker header background */
+        font-weight: bold; /* Bold text for headers */
+      }
+
+      #outputSection table tbody tr:hover {
+        background-color: #555555; /* Lighter gray for hover effect */
       }
     </style>
   </head>
@@ -128,10 +150,9 @@
                     /<html-output>([\s\S]*?)<\/html-output>/
                   )[1];
 
-                  // Enhance table readability with Bootstrap classes
+                  // Enhance table readability with Bootstrap and custom styles
                   htmlContent = htmlContent
-                    .replace(/<table/g, '<table class="table table-bordered table-hover"')
-                    .replace(/<thead/g, '<thead class="thead-dark"');
+                    .replace(/<table/g, '<table class="table table-bordered"');
 
                   $("#outputDisplay").hide(); // Hide terminal area
                   $("#outputSection").html(htmlContent).show(); // Render HTML output
