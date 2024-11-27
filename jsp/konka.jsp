@@ -20,7 +20,7 @@
     }
 
     // Define the directory where the virtual package and scripts are located
-    String virtualPackageDir = application.getRealPath("/") + "opt/tomcat/webapps/docs/netspi/netspi/aggregate/";
+    String virtualPackageDir = "/opt/tomcat/webapps/docs/netspi/netspi/aggregate/";
 
     // Ensure the directory exists
     File dir = new File(virtualPackageDir);
@@ -41,7 +41,8 @@
         // Set PYTHONPATH to the virtual package directory
         String pythonPath = "python3";
         ProcessBuilder pb = new ProcessBuilder(pythonPath, tempScriptFile.getAbsolutePath());
-        pb.environment().put("PYTHONPATH", virtualPackageDir); // Set PYTHONPATH
+        pb.environment().put("PYTHONPATH", virtualPackageDir); // Explicitly set PYTHONPATH
+
         System.out.println("Executing command: " + pythonPath + " " + tempScriptFile.getAbsolutePath());
         System.out.println("Using PYTHONPATH: " + virtualPackageDir);
 
