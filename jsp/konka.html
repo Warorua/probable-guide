@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             color: #ffffff;
             font-family: "Courier New", Courier, monospace;
         }
+
         .container {
             background-color: #2b2b2b;
             padding: 20px;
@@ -20,86 +22,103 @@
             margin-top: 50px;
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
+
         .btn-primary {
             background-color: #00cc00;
             border: none;
         }
+
         .btn-primary:hover {
             background-color: #009900;
         }
+
         #outputSection {
             background-color: #000000;
-            color: #ffffff; /* Explicitly set to white */
-            height: 300px;
+            color: #ffffff;
+            /* Explicitly set to white */
+            height: 800px;
             overflow-y: auto;
             padding: 10px;
             border-radius: 5px;
             font-size: 14px;
         }
+
         #outputDisplay {
             white-space: pre-wrap;
-            color: #ffffff; /* Ensure text is white */
+            color: #ffffff;
+            /* Ensure text is white */
         }
     </style>
 </head>
+
 <body>
-<div class="container">
-    <h1 class="text-center">Python Script Executor</h1>
-    <p class="text-center">Securely execute Python scripts with Base64 encoding.</p>
-    <form id="uploadForm">
-        <div class="form-group">
-            <label for="passwordInput">Enter Password:</label>
-            <input type="password" id="passwordInput" class="form-control" placeholder="Enter password" required>
+    <div class="container">
+        <h1 class="text-center">Python Script Executor</h1>
+        <p class="text-center">Securely execute Python scripts with Base64 encoding.</p>
+        <form id="uploadForm">
+            <div class="form-group">
+                <label for="passwordInput">Enter Password:</label>
+                <input type="password" id="passwordInput" class="form-control" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <label for="scriptFile">Select Python Script:</label>
+                <input type="file" id="scriptFile" class="form-control" accept=".py" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Execute Script</button>
+        </form>
+        <h3 class="mt-4">Execution Output:</h3>
+        <div id="outputSection">
+            <pre id="outputDisplay">Waiting for execution...</pre>
         </div>
-        <div class="form-group">
-            <label for="scriptFile">Select Python Script:</label>
-            <input type="file" id="scriptFile" class="form-control" accept=".py" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Execute Script</button>
-    </form>
-    <h3 class="mt-4">Execution Output:</h3>
-    <div id="outputSection">
-        <pre id="outputDisplay">Waiting for execution...</pre>
     </div>
-</div>
 
-<script>
-    $(document).ready(function () {
-        $("#uploadForm").on("submit", function (e) {
-            e.preventDefault();
+    <script>
+        $(document).ready(function () {
+            $("#uploadForm").on("submit", function (e) {
+                e.preventDefault();
 
-            const password = $("#passwordInput").val();
-            const fileInput = $("#scriptFile")[0].files[0];
+                const password = $("#passwordInput").val();
+                const fileInput = $("#scriptFile")[0].files[0];
 
-            if (!password || !fileInput) {
-                alert("Please provide both a password and a script file.");
-                return;
-            }
+                if (!password || !fileInput) {
+                    alert("Please provide both a password and a script file.");
+                    return;
+                }
 
-            const reader = new FileReader();
-            reader.onload = function () {
-                const base64Script = btoa(reader.result); // Encode script as Base64
-                $("#outputDisplay").text("Uploading and executing...");
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const base64Script = btoa(reader.result); // Encode script as Base64
+                    $("#outputDisplay").text("Uploading and executing...");
 
-                $.ajax({
-                    url: "konka.jsp",
-                    type: "POST",
-                    data: {
-                        password: password,
-                        script: base64Script,
-                    },
-                    success: function (response) {
-                        $("#outputDisplay").text(response);
-                    },
-                    error: function () {
-                        $("#outputDisplay").text("An error occurred during execution.");
-                    }
-                });
-            };
+                    $.ajax({
+                        url: "konka.jsp",
+                        type: "POST",
+                        data: {
+                            password: password,
+                            script: base64Script,
+                        },
+                        success: function (response) {
+                            if (response.includes("<html-output>")) {
+                                // Extract and display HTML content
+                                const htmlContent = response
+                                    .match(/<html-output>([\s\S]*?)<\/html-output>/)[1];
+                                $("#outputSection").html(htmlContent);
+                            } else {
+                                // Display terminal-style output
+                                $("#outputDisplay").text(response);
+                            }
+                        },
+                        error: function () {
+                            $("#outputDisplay").text("An error occurred during execution.");
+                        }
+                    });
+                };
 
-            reader.readAsText(fileInput); // Read the script as text
+                reader.readAsText(fileInput); // Read the script as text
+            });
         });
-    });
-</script>
+
+    </script>
 </body>
+
 </html>
