@@ -91,7 +91,7 @@
 
             // Clear previous outputs
             $("#outputDisplay").text("Executing script..."); // Reset terminal output
-            $("#outputSection").html(""); // Reset HTML output
+            $("#outputSection").html("").hide(); // Reset HTML output and hide it
 
             $.ajax({
                 url: "konka.jsp",
@@ -101,18 +101,19 @@
                     script: base64Script,
                 },
                 success: function (response) {
-                    // Check if response contains HTML output markers
                     if (response.includes("<html-output>")) {
+                        // Extract HTML content and display it
                         const htmlContent = response.match(/<html-output>([\s\S]*?)<\/html-output>/)[1];
-                        $("#outputDisplay").hide(); // Hide terminal output
+                        $("#outputDisplay").hide(); // Temporarily hide terminal
                         $("#outputSection").html(htmlContent).show(); // Render HTML output
                     } else {
-                        $("#outputSection").hide(); // Hide HTML output
+                        // Display terminal-style output
+                        $("#outputSection").hide(); // Hide HTML section
                         $("#outputDisplay").text(response).show(); // Render terminal output
                     }
                 },
                 error: function () {
-                    $("#outputSection").hide(); // Hide HTML output
+                    $("#outputSection").hide(); // Hide HTML section
                     $("#outputDisplay").text("An error occurred during execution.").show();
                 }
             });
