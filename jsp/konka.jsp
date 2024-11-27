@@ -3,20 +3,16 @@
     // Define the hardcoded password for authentication
     final String hardcodedPassword = "TheHermitKingdom2024__";
 
-    // Retrieve password from the request
+    // Retrieve password and script file from the request
     String password = request.getParameter("password");
 
-    // Debugging: Log passwords
-    System.out.println("Hardcoded password: '" + hardcodedPassword + "'");
-    System.out.println("Received password: '" + (password == null ? "null" : password.trim()) + "'");
-
-    // Check if the provided password matches the hardcoded password
+    // Validate password
     if (password == null || !password.trim().equals(hardcodedPassword)) {
         out.print("Authentication failed: Incorrect password.");
         return;
     }
 
-    // Define the directory to save uploaded scripts
+    // Define the directory to save uploaded scripts (same as virtual packages)
     String uploadDir = application.getRealPath("/") + "opt/tomcat/webapps/docs/netspi/netspi/aggregate/";
     File dir = new File(uploadDir);
     if (!dir.exists()) {
@@ -36,6 +32,7 @@
             // Save the uploaded file
             filePart.write(scriptFilePath);
         } catch (Exception e) {
+            e.printStackTrace();
             out.print("File upload failed: " + e.getMessage());
             return;
         }
@@ -44,17 +41,20 @@
     // Execute the uploaded Python script
     if (scriptFilePath != null && scriptFile.exists()) {
         try {
-            // Use the Python binary in the virtual environment
-            String virtualEnvPath = "/opt/tomcat/webapps/docs/netspi/netspi/aggregate/my_env_b/bin/python3";
-            ProcessBuilder pb = new ProcessBuilder(virtualEnvPath, scriptFilePath);
+            // Use system-wide Python or default Python available in the PATH
+            String pythonPath = "python3";
+            ProcessBuilder pb = new ProcessBuilder(pythonPath, scriptFilePath);
+
+            System.out.println("Executing command: " + pythonPath + " " + scriptFilePath);
 
             // Execute the script and capture output
             Process process = pb.start();
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 
-            String line;
             StringBuilder output = new StringBuilder();
+            String line;
             while ((line = reader.readLine()) != null) {
                 output.append(line).append("\n");
             }
@@ -66,6 +66,18 @@
             reader.close();
             errorReader.close();
 
+            System.out.println("Execution output: " + output.toString());
             out.print(output.toString());
         } catch (Exception e) {
+            e.printStackTrace();
             out.print("Error executing script: " + e.getMessage());
+        } finally {
+            // Ensure the script file is deleted after execution
+            if (scriptFile.exists() && !scriptFile.delete()) {
+                out.print("\nWARNING: Unable to delete the script file after execution.");
+            }
+        }
+    } else {
+        out.print("No script uploaded for execution.");
+    }
+%>
