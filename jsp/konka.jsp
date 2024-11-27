@@ -38,9 +38,14 @@
             writer.write(decodedScript);
         }
 
-        // Execute the script using system-wide Python
+        // Set PYTHONPATH to the virtual package directory
         String pythonPath = "python3";
         ProcessBuilder pb = new ProcessBuilder(pythonPath, tempScriptFile.getAbsolutePath());
+        pb.environment().put("PYTHONPATH", virtualPackageDir); // Set PYTHONPATH
+        System.out.println("Executing command: " + pythonPath + " " + tempScriptFile.getAbsolutePath());
+        System.out.println("Using PYTHONPATH: " + virtualPackageDir);
+
+        // Execute the script
         Process process = pb.start();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
